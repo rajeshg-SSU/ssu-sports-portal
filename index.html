@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sri Sri University Sports Council | Official Sports Portal</title>
+  <meta name="description" content="Official Sports Portal of Sri Sri University. Host of Collympics (Intra) and Veerodaya (Inter) Sports Fest.">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="assets/ssu_round_favicon.png">
+  <link rel="apple-touch-icon" href="assets/ssu_round_favicon.png">
+
+  <!-- Font Awesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  
+  <!-- Design System CSS -->
+  <link rel="stylesheet" href="css/design-system.css">
+  <link rel="stylesheet" href="css/main.css">
+</head>
+<body>
+
+  <!-- Top Announcement Bar -->
+  <div class="top-announcement-bar">
+    <i class="fas fa-fire"></i> <strong>COLLYMPICS & VEERODAYA:</strong> Official Sports Portal of Sri Sri University!
+    <a href="intra-university.html"><i class="fas fa-arrow-right"></i> Explore Sports Fests</a>
+  </div>
+
+  <!-- Header Navigation -->
+  <header class="ssu-header" id="site-header">
+    <div class="header-container">
+      <a href="index.html" class="ssu-brand">
+        <img src="assets/ssu_logo.png" class="ssu-logo-img" alt="Sri Sri University Logo">
+      </a>
+
+      <nav>
+        <ul class="nav-menu" id="nav-menu">
+          <li><a href="index.html" class="nav-link active">Home</a></li>
+          <li><a href="intra-university.html" class="nav-link">Collympics (Intra)</a></li>
+          <li><a href="inter-university.html" class="nav-link">Veerodaya (Inter)</a></li>
+          <li><a href="#gallery" class="nav-link">Gallery</a></li>
+          <li><a href="#dsw-dean" class="nav-link">DSW Dean</a></li>
+          <li><a href="#council-members" class="nav-link">Council Members</a></li>
+          <li><a href="#coaches" class="nav-link">Coaches</a></li>
+          <li><a href="admin.html" class="nav-link" style="color: var(--color-primary); font-weight: 700;"><i class="fas fa-lock"></i> Admin Portal</a></li>
+        </ul>
+      </nav>
+
+      <div style="display: flex; align-items: center; gap: 10px; flex-shrink: 0;">
+        <a href="https://app.srisriuniversity.edu.in/collympic-2026/" target="_blank" rel="noopener" class="btn-primary header-action-btn">
+          <i class="fas fa-trophy"></i> COLLYMPICS FORM
+        </a>
+        <button class="mobile-menu-toggle" id="mobile-menu-toggle" aria-label="Toggle navigation menu">
+          <i class="fas fa-bars"></i>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- 1. HERO SECTION -->
+    <section class="hero-section">
+      <div class="hero-container">
+        <!-- Hero Left Content -->
+        <div class="hero-content">
+          <div class="hero-badge">
+            <img src="assets/ssu_logo.png" alt="SSU Emblem Badge">
+            <span>Sri Sri University Sports Council</span>
+          </div>
+
+          <h1 class="hero-title">
+            Where Sport Meets <span class="accent-maroon">Spirit & Excellence</span>
+          </h1>
+
+          <p class="hero-subtitle">
+            Welcome to the official Sri Sri University Sports Portal. Fostering athletic mastery, teamwork, and sportsmanship across intra and inter-university championships.
+          </p>
+
+          <div class="hero-actions">
+            <a href="intra-university.html" class="btn-primary">
+              <span>Collympics Fest (Intra)</span>
+              <i class="fas fa-arrow-right"></i>
+            </a>
+            <a href="inter-university.html" class="btn-outline">
+              <span>Veerodaya Fest (Inter)</span>
+              <i class="fas fa-trophy"></i>
+            </a>
+          </div>
+
+          <!-- Quick Stats Row -->
+          <div class="hero-stats-row">
+            <div class="stat-card">
+              <div class="stat-number">1,500+</div>
+              <div class="stat-label">Student Athletes</div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-number">23</div>
+              <div class="stat-label">Participating Varsities</div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-number">14+</div>
+              <div class="stat-label">Sports Disciplines</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Hero Right Content: Torch Runner Illustration -->
+        <div class="hero-canvas-container">
+          <div class="hero-runner-wrapper">
+            <img id="user-torch-runner-img" src="assets/ssu_torch_runner_final.png" class="hero-user-runner-img" alt="SSU Torch Runner">
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 2. ABOUT SSU SPORTS COUNCIL SECTION -->
+    <section class="section-ssu section-bg-cream" id="about-council" style="padding: 60px 24px; border-bottom: 2px solid var(--color-bg-medium);">
+      <div class="container-ssu">
+        <div style="display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 40px; align-items: center;" class="responsive-2col">
+          <div>
+            <span class="section-subtitle">Official Governing Body</span>
+            <h2 class="section-title" style="font-size: 36px;">About SSU Sports Council</h2>
+            <p style="font-size: 16px; color: var(--color-text-muted); line-height: 1.7; margin-bottom: 16px;">
+              The <strong>Sri Sri University Sports Council</strong> is the dedicated organization responsible for promoting athletic excellence, sportsmanship, physical fitness, and holistic student development across campus.
+            </p>
+            <p style="font-size: 16px; color: var(--color-text-muted); line-height: 1.7; margin-bottom: 24px;">
+              Operating under the guidance of the Dean Student Welfare (DSW) Office, the Sports Council organizes annual intra-university festivals, inter-university tournaments, selection trials, and specialized coaching programs across 14+ athletic disciplines.
+            </p>
+            <div style="display: flex; gap: 12px; flex-wrap: wrap;">
+              <span class="badge-ssu" style="background: #ffffff; color: var(--color-primary); font-weight: 700; border: 1px solid var(--color-bg-medium);">
+                <i class="fas fa-running"></i> Athletic Mastery
+              </span>
+              <span class="badge-ssu" style="background: #ffffff; color: var(--color-primary); font-weight: 700; border: 1px solid var(--color-bg-medium);">
+                <i class="fas fa-hands-helping"></i> Team Leadership
+              </span>
+              <span class="badge-ssu" style="background: #ffffff; color: var(--color-primary); font-weight: 700; border: 1px solid var(--color-bg-medium);">
+                <i class="fas fa-medal"></i> Championship Sportsmanship
+              </span>
+            </div>
+          </div>
+
+          <!-- Council Highlights Card -->
+          <div class="card-ssu" style="background: #ffffff; padding: 32px; border: 2px solid var(--color-primary);">
+            <h3 style="font-size: 22px; color: var(--color-primary); margin-bottom: 18px; font-family: var(--font-heading);">
+              <i class="fas fa-shield-alt"></i> Core Objectives
+            </h3>
+            <ul style="list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 14px;">
+              <li style="display: flex; align-items: flex-start; gap: 12px; font-size: 15px; color: var(--color-text);">
+                <div style="width: 32px; height: 32px; background: #fff8ee; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: var(--color-primary); font-size: 14px; flex-shrink: 0;"><i class="fas fa-check"></i></div>
+                <span><strong>Intra & Inter Varsity Meets:</strong> Conducting flagship tournaments like Collympics & Veerodaya.</span>
+              </li>
+              <li style="display: flex; align-items: flex-start; gap: 12px; font-size: 15px; color: var(--color-text);">
+                <div style="width: 32px; height: 32px; background: #fff8ee; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: var(--color-primary); font-size: 14px; flex-shrink: 0;"><i class="fas fa-check"></i></div>
+                <span><strong>Professional Coaching:</strong> Employing NIS & National level certified coaches for technical growth.</span>
+              </li>
+              <li style="display: flex; align-items: flex-start; gap: 12px; font-size: 15px; color: var(--color-text);">
+                <div style="width: 32px; height: 32px; background: #fff8ee; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: var(--color-primary); font-size: 14px; flex-shrink: 0;"><i class="fas fa-check"></i></div>
+                <span><strong>Infrastructure Management:</strong> Maintaining synthetic courts, cricket ovals, and indoor halls.</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 3. TYPES OF EVENTS SECTION -->
+    <section class="section-ssu section-bg-light" id="types-of-events" style="padding: 60px 24px;">
+      <div class="container-ssu">
+        <div class="section-header" style="margin-bottom: 40px;">
+          <span class="section-subtitle">Sports Calendar Categories</span>
+          <h2 class="section-title">Types Of Events</h2>
+          <p class="section-description">Discover the diverse range of intra, inter, and internal sports tournaments organized at SSU.</p>
+        </div>
+
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 28px;">
+          
+          <!-- Category 1: Collympics Fest (Intra) -->
+          <div class="card-ssu" style="background: #ffffff; padding: 32px; border-top: 5px solid var(--color-primary);">
+            <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 16px;">
+              <span class="badge-ssu" style="background: #fff8ee; color: var(--color-primary);"><i class="fas fa-fire"></i> INTRA-UNIVERSITY</span>
+              <span style="font-size: 24px; color: var(--color-primary);"><i class="fas fa-trophy"></i></span>
+            </div>
+            <h3 style="font-size: 24px; color: var(--color-primary); margin-bottom: 10px; font-family: var(--font-heading);">Collympics Fest (Intra)</h3>
+            <p style="font-size: 15px; color: var(--color-text-muted); line-height: 1.6; margin-bottom: 20px;">
+              Sri Sri University's flagship annual intra-university sports extravaganza bringing together 1,500+ students across all faculties and departments in friendly rivalry.
+            </p>
+            <a href="intra-university.html" class="btn-primary" style="padding: 10px 20px; font-size: 14px;">
+              <i class="fas fa-arrow-right"></i> Explore Collympics Fest
+            </a>
+          </div>
+
+          <!-- Category 2: Veerodaya Fest (Inter) -->
+          <div class="card-ssu" style="background: #ffffff; padding: 32px; border-top: 5px solid var(--color-secondary);">
+            <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 16px;">
+              <span class="badge-ssu" style="background: #e8f5e9; color: var(--color-secondary);"><i class="fas fa-globe"></i> INTER-UNIVERSITY</span>
+              <span style="font-size: 24px; color: var(--color-secondary);"><i class="fas fa-award"></i></span>
+            </div>
+            <h3 style="font-size: 24px; color: var(--color-primary); margin-bottom: 10px; font-family: var(--font-heading);">Veerodaya Fest (Inter)</h3>
+            <p style="font-size: 15px; color: var(--color-text-muted); line-height: 1.6; margin-bottom: 20px;">
+              Mega inter-university championship hosting 23+ top universities across the region with ₹1.8L+ cash prize pool and national media spotlight.
+            </p>
+            <a href="inter-university.html" class="btn-primary" style="background: var(--color-secondary); border-color: var(--color-secondary); padding: 10px 20px; font-size: 14px;">
+              <i class="fas fa-arrow-right"></i> Explore Veerodaya Fest
+            </a>
+          </div>
+
+          <!-- Category 3: Other Internal Events -->
+          <div class="card-ssu" style="background: #ffffff; padding: 32px; border-top: 5px solid var(--color-accent-amber);">
+            <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 16px;">
+              <span class="badge-ssu" style="background: #fff8ee; color: #b88600;"><i class="fas fa-running"></i> CAMPUS MEETS</span>
+              <span style="font-size: 24px; color: var(--color-accent-amber);"><i class="fas fa-medal"></i></span>
+            </div>
+            <h3 style="font-size: 24px; color: var(--color-primary); margin-bottom: 10px; font-family: var(--font-heading);">Other Internal Events</h3>
+            <p style="font-size: 15px; color: var(--color-text-muted); line-height: 1.6; margin-bottom: 20px;">
+              Selection trials, annual athletic meets, inter-departmental league cups, friendly varsity matches, and fitness workshops held throughout the year.
+            </p>
+            <a href="#schedule" class="btn-outline" style="padding: 10px 20px; font-size: 14px;">
+              <i class="fas fa-calendar-alt"></i> View Campus Schedule
+            </a>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- 4. PHOTO GALLERY SECTION -->
+    <section class="section-ssu section-bg-cream" id="gallery">
+      <div class="container-ssu">
+        <div class="section-header">
+          <span class="section-subtitle">Visual Highlights</span>
+          <h2 class="section-title">Sports Photo & Event Gallery</h2>
+          <p class="section-description">
+            Explore dedicated albums showcasing world-class courts, intense practice sessions, championship victories, and team celebrations.
+          </p>
+        </div>
+
+        <!-- Gallery Category Filter Tabs -->
+        <div class="gallery-filters">
+          <button class="filter-btn active" data-filter="all">All Photos</button>
+          <button class="filter-btn" data-filter="events">Events & Winners</button>
+          <button class="filter-btn" data-filter="cricket">Cricket & Basketball</button>
+          <button class="filter-btn" data-filter="football">Football & Futsal</button>
+          <button class="filter-btn" data-filter="volleyball">Volleyball</button>
+        </div>
+
+        <!-- Gallery Grid (Dynamically Rendered from SSUDataStore) -->
+        <div class="gallery-grid">
+          <!-- Rendered by js/app.js -->
+        </div>
+      </div>
+    </section>
+
+    <!-- 5. DEAN STUDENT WELFARE (DSW) SECTION -->
+    <section class="section-ssu section-bg-light" id="dsw-dean" style="padding: 60px 24px;">
+      <div class="container-ssu">
+        <div class="section-header">
+          <span class="section-subtitle">Leadership & Patronage</span>
+          <h2 class="section-title">Dean Student Welfare</h2>
+          <p class="section-description">Under the leadership and guidance of the DSW Office steering student wellness and sports initiatives.</p>
+        </div>
+
+        <div style="max-width: 480px; margin: 0 auto;">
+          <div class="core-card" style="background: #ffffff; text-align: center;">
+            <div class="core-photo-wrapper" style="height: 260px;">
+              <img src="profile photos/Dr Jay Prakash Bhat.jpg" class="core-photo" alt="Dr. Jay Prakash Bhat">
+            </div>
+            <div class="core-details" style="padding: 24px;">
+              <h3 style="font-size: 24px; color: var(--color-text); margin-bottom: 4px; font-weight: 700;">Dr. Jay Prakash Bhat</h3>
+              <div style="color: var(--color-primary); font-weight: 700; font-size: 15px; margin-bottom: 2px;">
+                <i class="fas fa-university"></i> Dean Student Welfare
+              </div>
+              <div style="color: var(--color-secondary); font-weight: 700; font-size: 14px; margin-bottom: 14px;">
+                <i class="fas fa-trophy"></i> Chair Person Sports Council
+              </div>
+              <div class="core-info-text" style="font-size: 14px; gap: 8px;">
+                <p style="margin: 0; font-weight: 600; color: var(--color-primary);">
+                  <i class="fas fa-envelope"></i> jay.b@srisriuniversity.edu.in
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 6. COUNCIL MEMBERS SECTION -->
+    <section class="section-ssu section-bg-cream" id="council-members" style="padding: 60px 24px;">
+      <div class="container-ssu">
+        <div class="section-header">
+          <span class="section-subtitle">Administration & Coordination</span>
+          <h2 class="section-title">Council Members</h2>
+          <p class="section-description">The dedicated faculty members and sports coordinators managing sports operations.</p>
+        </div>
+        <div class="core-grid">
+          <!-- Shreeram Rautaray -->
+          <div class="core-card">
+            <div class="core-photo-wrapper">
+              <img src="profile photos/Shreeram Rautaray.jpg" class="core-photo" alt="Shreeram Rautaray">
+            </div>
+            <div class="core-details">
+              <h4 style="font-size: 19px; font-weight: 700; margin-bottom: 4px;">Shreeram Rautaray</h4>
+              <div style="color: var(--color-primary); font-weight: 700; font-size: 13px; margin-bottom: 2px;">
+                <i class="fas fa-university"></i> Assistant Professor
+              </div>
+              <div style="color: var(--color-secondary); font-weight: 700; font-size: 12px; margin-bottom: 12px;">
+                <i class="fas fa-trophy"></i> Joint Secretary Sports
+              </div>
+              <div class="core-info-text">
+                <p style="margin: 0; font-size: 12px; font-weight: 600; color: var(--color-primary);">
+                  <i class="fas fa-envelope"></i> shreeram.r@srisriuniversity.edu.in
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Dr. Rajat Kumar Baliarsingh -->
+          <div class="core-card">
+            <div class="core-photo-wrapper">
+              <img src="profile photos/Rajat Ku Baliyarsingh.jpg" class="core-photo" alt="Dr. Rajat Kumar Baliarsingh">
+            </div>
+            <div class="core-details">
+              <h4 style="font-size: 19px; font-weight: 700; margin-bottom: 4px;">Dr. Rajat Kumar Baliarsingh</h4>
+              <div style="color: var(--color-primary); font-weight: 700; font-size: 13px; margin-bottom: 2px;">
+                <i class="fas fa-university"></i> Assistant Professor
+              </div>
+              <div style="color: var(--color-secondary); font-weight: 700; font-size: 12px; margin-bottom: 12px;">
+                <i class="fas fa-trophy"></i> Joint Secretary Sports
+              </div>
+              <div class="core-info-text">
+                <p style="margin: 0; font-size: 12px; font-weight: 600; color: var(--color-primary);">
+                  <i class="fas fa-envelope"></i> rajat.b@srisriuniversity.edu.in
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Purna Chandra Panda -->
+          <div class="core-card">
+            <div class="core-photo-wrapper">
+              <img src="profile photos/Purnachandra Panda.jpg" class="core-photo" alt="Purna Chandra Panda">
+            </div>
+            <div class="core-details">
+              <h4 style="font-size: 19px; font-weight: 700; margin-bottom: 4px;">Purna Chandra Panda</h4>
+              <div style="color: var(--color-primary); font-weight: 700; font-size: 13px; margin-bottom: 2px;">
+                <i class="fas fa-university"></i> Co-ordinator DSW Office
+              </div>
+              <div style="color: var(--color-secondary); font-weight: 700; font-size: 12px; margin-bottom: 12px;">
+                <i class="fas fa-trophy"></i> Sports Co-ordinator
+              </div>
+              <div class="core-info-text">
+                <p style="margin: 0; font-size: 12px; font-weight: 600; color: var(--color-primary);">
+                  <i class="fas fa-envelope"></i> purnachandra.p@srisri.edu.in
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 7. COACHES SECTION -->
+    <section class="section-ssu section-bg-light" id="coaches">
+      <div class="container-ssu">
+        <div class="section-header">
+          <span class="section-subtitle">Mentorship & Training</span>
+          <h2 class="section-title">Coaches & Trainers</h2>
+          <p class="section-description">
+            Meet the certified professionals dedicated to honing student sportsmanship, technical mastery, and athletic victory.
+          </p>
+        </div>
+
+        <!-- Coaches Grid (Dynamically Rendered from SSUDataStore) -->
+        <div class="coaches-grid">
+          <!-- Rendered by js/app.js -->
+        </div>
+      </div>
+    </section>
+
+    <!-- 8. SOCIAL MEDIA LINKS SECTION -->
+    <section class="section-ssu section-bg-cream" id="social-links" style="padding: 60px 24px;">
+      <div class="container-ssu">
+        <div class="section-header" style="margin-bottom: 36px;">
+          <span class="section-subtitle">Connect With Us</span>
+          <h2 class="section-title">Social Media Links & Official Channels</h2>
+          <p class="section-description">Follow Sri Sri University Sports Council on social platforms for live updates, scores, and media coverage.</p>
+        </div>
+
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 20px;">
+          <a href="https://www.instagram.com/sportscouncilssu" target="_blank" rel="noopener" class="card-ssu" style="background: #ffffff; text-decoration: none; text-align: center; padding: 28px;">
+            <div style="font-size: 40px; color: #e1306c; margin-bottom: 10px;"><i class="fab fa-instagram"></i></div>
+            <h4 style="font-size: 18px; color: var(--color-text); margin-bottom: 4px;">Instagram</h4>
+            <p style="font-size: 13px; color: var(--color-primary); font-weight: 700; margin: 0;">@sportscouncilssu</p>
+          </a>
+
+          <a href="mailto:sportscom@srisriuniversity.edu.in" class="card-ssu" style="background: #ffffff; text-decoration: none; text-align: center; padding: 28px;">
+            <div style="font-size: 40px; color: var(--color-primary); margin-bottom: 10px;"><i class="fas fa-envelope"></i></div>
+            <h4 style="font-size: 18px; color: var(--color-text); margin-bottom: 4px;">Official Email</h4>
+            <p style="font-size: 13px; color: var(--color-primary); font-weight: 700; margin: 0;">sportscom@srisriuniversity.edu.in</p>
+          </a>
+
+          <a href="https://srisriuniversity.edu.in" target="_blank" rel="noopener" class="card-ssu" style="background: #ffffff; text-decoration: none; text-align: center; padding: 28px;">
+            <div style="font-size: 40px; color: var(--color-secondary); margin-bottom: 10px;"><i class="fas fa-globe"></i></div>
+            <h4 style="font-size: 18px; color: var(--color-text); margin-bottom: 4px;">University Portal</h4>
+            <p style="font-size: 13px; color: var(--color-primary); font-weight: 700; margin: 0;">srisriuniversity.edu.in</p>
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- LIGHTBOX MODAL FOR GALLERY -->
+  <div class="modal-overlay" id="lightbox-modal">
+    <div class="modal-card" style="max-width: 900px; padding: 16px; background: transparent; box-shadow: none; border: none;">
+      <button class="modal-close-btn" id="lightbox-close" style="background: #ffffff; color: #000000; top: 0; right: 0; width: 40px; height: 40px; border-radius: 50%; border: none; font-size: 18px; cursor: pointer; box-shadow: 0 4px 12px rgba(0,0,0,0.3);"><i class="fas fa-times"></i></button>
+      <img id="lightbox-img" src="" style="width: 100%; height: auto; max-height: 82vh; object-fit: contain; border-radius: 16px; box-shadow: 0 20px 50px rgba(0,0,0,0.6);" alt="Gallery Large View">
+      <h4 id="lightbox-title" style="color: #ffffff; text-align: center; margin-top: 14px; font-size: 18px; font-weight: 600;">Visual View</h4>
+    </div>
+  </div>
+
+  <!-- COACH DETAIL MODAL -->
+  <div class="modal-overlay" id="coach-detail-modal">
+    <div class="modal-card">
+      <button class="modal-close-btn" id="coach-modal-close"><i class="fas fa-times"></i></button>
+      <div id="coach-modal-body"></div>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer class="ssu-footer">
+    <div class="container-ssu">
+      <div class="footer-grid">
+        <div class="footer-col">
+          <img src="assets/ssu_logo.png" style="height: 52px; margin-bottom: 16px;" alt="SSU Logo">
+          <p style="font-size: 14px; color: #aaa; line-height: 1.6; margin-bottom: 16px;">
+            Official portal of Sri Sri University Sports Council. Nurturing athletic champions through holistic education, sportsmanship, and leadership.
+          </p>
+          <span class="badge-ssu" style="background: rgba(255,255,255,0.1); color: var(--color-accent-gold); border: 1px solid rgba(252,185,0,0.3);">
+            <i class="fas fa-trophy"></i> Learn · Lead · Serve
+          </span>
+        </div>
+
+        <div class="footer-col">
+          <h4>Quick Navigation</h4>
+          <ul class="footer-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="intra-university.html">Collympics (Intra)</a></li>
+            <li><a href="inter-university.html">Veerodaya (Inter)</a></li>
+            <li><a href="#gallery">Photo Gallery</a></li>
+            <li><a href="admin.html">Admin Portal</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>Sports Events</h4>
+          <ul class="footer-links">
+            <li><a href="inter-university.html#results-board">Veerodaya 2026 Winners</a></li>
+            <li><a href="inter-university.html#ceremony-highlights">Closing Ceremony</a></li>
+            <li><a href="inter-university.html#press-coverage">Media Coverage</a></li>
+            <li><a href="inter-university.html#prize-pool">Prize Pool Schedule</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>Contact & Helplines</h4>
+          <p style="font-size: 14px; color: #aaa; margin-bottom: 12px;"><i class="fas fa-envelope" style="color: var(--color-accent-gold);"></i> sportscom@srisriuniversity.edu.in</p>
+          <p style="font-size: 14px; color: #aaa; margin-bottom: 12px;"><i class="fab fa-instagram" style="color: var(--color-accent-gold);"></i> @sportscouncilssu</p>
+          <p style="font-size: 14px; color: #aaa;"><i class="fas fa-map-marker-alt" style="color: var(--color-accent-gold);"></i> Sri Sri University Campus, Bidyadharpur, Cuttack, Odisha 754006</p>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>&copy; 2026 Sri Sri University Sports Council. All Rights Reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/data-store.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>

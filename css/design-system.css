@@ -1,0 +1,229 @@
+/* ==========================================
+   SRI SRI UNIVERSITY - DESIGN SYSTEM
+   Theme: Learn Lead Serve - Sports Council (Maroon Edition)
+   ========================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Crimson+Pro:ital,wght@0,400;0,600;0,700;1,400&family=Roboto:wght@400;500;700;900&family=Inter:wght@400;500;600;700&display=swap');
+
+:root {
+  /* -----------------------------------
+     Color Palette & Roles (SSU Maroon Theme)
+     ----------------------------------- */
+  --color-primary: #6e2815;          /* Signature SSU Maroon primary brand & CTA color */
+  --color-primary-hover: #4e1a0d;
+  --color-secondary: #64191b;        /* Dark Maroon secondary brand accent */
+  --color-secondary-hover: #430f11;
+  
+  --color-bg: #ffffff;               /* Light/white background - primary canvas */
+  --color-bg-block: #fff8ee;         /* Warm cream surface block */
+  --color-bg-medium: #f1e2cc;        /* Medium cream surface block */
+  
+  --color-text: #000000;             /* Headings & primary text */
+  --color-text-muted: #666666;       /* Muted body text */
+  --color-text-light: #ffffff;       /* Light text on maroon */
+  
+  --color-accent-maroon: #64191b;    /* Dark maroon text accent */
+  --color-accent-brown: #873d05;     /* Warm brown accent */
+  --color-accent-gold: #d1c798;      /* Gold accent */
+  --color-accent-amber: #fcb900;     /* Amber flame highlight */
+  
+  --color-border: #fff8ee;           /* Light dividers */
+  --color-border-strong: #e2e8f0;    /* Outlines */
+  --color-success: #28a745;
+  --color-warning: #ffc107;
+  --color-danger: #dc3545;
+
+  /* Typography Tokens */
+  --font-heading: 'Roboto', -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --font-body: 'Crimson Pro', 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  
+  /* Type Scale */
+  --font-size-display: 40px;
+  --font-size-h1: 32px;
+  --font-size-h2: 24px;
+  --font-size-h3: 20px;
+  --font-size-h4: 16px;
+  --font-size-body-l: 18px;
+  --font-size-body: 15px;
+  --font-size-sm: 13px;
+
+  --font-weight-regular: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+  --font-weight-bold: 700;
+
+  /* Spacing Grid (8px Base Unit) */
+  --spacing-xs: 4px;
+  --spacing-sm: 8px;
+  --spacing-md: 16px;
+  --spacing-lg: 24px;
+  --spacing-xl: 32px;
+  --spacing-2xl: 48px;
+  --spacing-3xl: 64px;
+
+  /* Border Radius Scale */
+  --radius-subtle: 4px;
+  --radius-button: 10px;
+  --radius-card: 20px;
+  --radius-large: 30px;
+  --radius-pill: 40px;
+  --radius-circle: 50%;
+
+  /* Depth & Elevation Shadows */
+  --shadow-sm: rgba(0, 0, 0, 0.05) 0px 2px 8px 0px;
+  --shadow-mid: rgba(0, 0, 0, 0.1) 1px 1px 15px 0px;
+  --shadow-high: rgba(0, 0, 0, 0.15) 0px 0px 25px 0px;
+  --shadow-tinted: rgba(110, 40, 21, 0.18) 0px 10px 30px 0px;
+
+  /* Transitions & Motion */
+  --transition-fast: 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-normal: 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-bounce: 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+/* Base Styles */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  font-size: 16px;
+}
+
+body {
+  font-family: var(--font-body);
+  font-size: var(--font-size-body-l);
+  line-height: 1.6;
+  color: var(--color-text);
+  background-color: var(--color-bg);
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-heading);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-text);
+  line-height: 1.25;
+}
+
+h1 { font-size: var(--font-size-display); }
+h2 { font-size: var(--font-size-h1); }
+h3 { font-size: var(--font-size-h2); }
+h4 { font-size: var(--font-size-h3); }
+
+a {
+  color: var(--color-primary);
+  text-decoration: none;
+  transition: color var(--transition-fast);
+}
+
+a:hover {
+  color: var(--color-primary-hover);
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* Design System Utility Classes */
+.btn-primary {
+  background: linear-gradient(135deg, var(--color-primary), var(--color-secondary));
+  color: var(--color-text-light) !important;
+  border-radius: var(--radius-pill);
+  padding: 12px 28px;
+  font-family: var(--font-sans);
+  font-size: 15px;
+  font-weight: 600;
+  border: none;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  box-shadow: var(--shadow-tinted);
+  transition: all var(--transition-normal);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.btn-primary:hover {
+  background: linear-gradient(135deg, var(--color-primary-hover), var(--color-secondary-hover));
+  transform: translateY(-2px);
+  box-shadow: rgba(110, 40, 21, 0.35) 0px 14px 35px 0px;
+}
+
+.btn-secondary {
+  background: var(--color-secondary);
+  color: var(--color-text-light) !important;
+  border-radius: var(--radius-pill);
+  padding: 12px 28px;
+  font-family: var(--font-sans);
+  font-size: 15px;
+  font-weight: 600;
+  border: none;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  transition: all var(--transition-normal);
+}
+
+.btn-secondary:hover {
+  background: var(--color-secondary-hover);
+  transform: translateY(-2px);
+}
+
+.btn-outline {
+  background: transparent;
+  color: var(--color-primary) !important;
+  border: 2px solid var(--color-primary);
+  border-radius: var(--radius-pill);
+  padding: 10px 24px;
+  font-family: var(--font-sans);
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  transition: all var(--transition-normal);
+}
+
+.btn-outline:hover {
+  background: var(--color-primary);
+  color: var(--color-text-light) !important;
+}
+
+.card-ssu {
+  background: var(--color-bg);
+  border-radius: var(--radius-card);
+  padding: var(--spacing-lg);
+  box-shadow: var(--shadow-mid);
+  border: 1px solid var(--color-bg-block);
+  transition: all var(--transition-normal);
+}
+
+.card-ssu:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--shadow-high);
+}
+
+.badge-ssu {
+  display: inline-block;
+  padding: 6px 14px;
+  border-radius: var(--radius-pill);
+  font-family: var(--font-sans);
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+  background: var(--color-bg-block);
+  color: var(--color-primary);
+  border: 1px solid var(--color-bg-medium);
+}

@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Dashboard Portal | Sri Sri University Sports Council</title>
+  <meta name="description" content="Official Admin Portal for Sri Sri University Sports Council. Manage photo gallery, news, blogs, events, match schedules, and faculty profiles.">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="assets/ssu_round_favicon.png">
+  <link rel="apple-touch-icon" href="assets/ssu_round_favicon.png">
+
+  <!-- Font Awesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  
+  <!-- Design System CSS -->
+  <link rel="stylesheet" href="css/design-system.css">
+  <link rel="stylesheet" href="css/main.css">
+</head>
+<body style="background: var(--color-bg-block);">
+
+  <!-- Admin Top Bar -->
+  <header class="ssu-header" style="background: #ffffff; border-bottom: 2px solid var(--color-primary);">
+    <div class="header-container">
+      <a href="index.html" class="ssu-brand">
+        <img src="assets/ssu_logo.png" class="ssu-logo-img" alt="SSU Logo">
+      </a>
+
+      <div style="display: flex; align-items: center; gap: 16px;">
+        <a href="index.html" class="btn-outline" style="padding: 8px 16px; font-size: 13px;">
+          <i class="fas fa-globe"></i> View Public Site
+        </a>
+        <button id="admin-logout-btn" class="btn-primary" style="display: none; padding: 8px 16px; font-size: 13px; background: var(--color-danger); border-color: var(--color-danger);">
+          <i class="fas fa-sign-out-alt"></i> Logout
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- LOGIN CONTAINER -->
+  <div id="admin-login-container" style="min-height: calc(100vh - 120px); display: flex; align-items: center; justify-content: center; padding: 20px;">
+    <div class="card-ssu" style="max-width: 440px; width: 100%; background: #ffffff; padding: 40px; border: 2px solid var(--color-primary); box-shadow: var(--shadow-high);">
+      <div style="text-align: center; margin-bottom: 28px;">
+        <img src="assets/ssu_logo.png" style="max-width: 220px; height: auto; margin-bottom: 16px;" alt="SSU Seal">
+        <h2 style="font-size: 24px; color: var(--color-primary); font-family: var(--font-heading);">Admin Portal Access</h2>
+        <p style="font-size: 13px; color: var(--color-text-muted);">Log in to manage gallery photos, posts, schedules & faculty profiles.</p>
+      </div>
+
+      <form id="admin-login-form">
+        <div class="form-group" style="margin-bottom: 20px;">
+          <label class="form-label" for="login-username">User ID / Username</label>
+          <input type="text" id="login-username" class="form-input" required placeholder="Enter User ID (default: admin)">
+        </div>
+
+        <div class="form-group" style="margin-bottom: 24px;">
+          <label class="form-label" for="login-password">Password</label>
+          <input type="password" id="login-password" class="form-input" required placeholder="Enter Password (default: ssu@sports2026)">
+        </div>
+
+        <div id="login-error-msg" style="display: none; background: #fff2f0; color: var(--color-danger); border: 1px solid var(--color-danger); padding: 10px; border-radius: 8px; font-size: 13px; margin-bottom: 20px; text-align: center;">
+          Invalid User ID or Password!
+        </div>
+
+        <button type="submit" class="btn-primary" style="width: 100%; text-align: center; justify-content: center; padding: 14px;">
+          <i class="fas fa-lock-open"></i> Log In to Dashboard
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <!-- DASHBOARD CONTAINER (PROTECTED) -->
+  <div id="admin-dashboard-container" style="display: none; padding: 40px 24px;">
+    <div class="container-ssu">
+      
+      <!-- Welcome Header & Quick Stats -->
+      <div style="margin-bottom: 32px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 20px;">
+        <div>
+          <span class="badge-ssu"><i class="fas fa-user-shield"></i> AUTHENTICATED ADMIN SESSION</span>
+          <h1 style="font-size: 32px; color: var(--color-text); margin-top: 6px;">Sports Council Control Center</h1>
+        </div>
+      </div>
+
+      <!-- Stats Summary Row -->
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 20px; margin-bottom: 40px;">
+        <div class="card-ssu" style="background: #ffffff;">
+          <div style="display: flex; align-items: center; gap: 16px;">
+            <div style="width: 50px; height: 50px; border-radius: 12px; background: #fff8ee; color: var(--color-primary); display: flex; align-items: center; justify-content: center; font-size: 22px;">
+              <i class="fas fa-images"></i>
+            </div>
+            <div>
+              <span style="font-size: 12px; color: var(--color-text-muted); font-weight: 600; text-transform: uppercase;">Gallery Photos</span>
+              <h3 id="stat-gallery-count" style="font-size: 28px; color: var(--color-primary); margin: 0;">0</h3>
+            </div>
+          </div>
+        </div>
+
+        <div class="card-ssu" style="background: #ffffff;">
+          <div style="display: flex; align-items: center; gap: 16px;">
+            <div style="width: 50px; height: 50px; border-radius: 12px; background: #fff8ee; color: var(--color-primary); display: flex; align-items: center; justify-content: center; font-size: 22px;">
+              <i class="fas fa-newspaper"></i>
+            </div>
+            <div>
+              <span style="font-size: 12px; color: var(--color-text-muted); font-weight: 600; text-transform: uppercase;">Posts & News</span>
+              <h3 id="stat-news-count" style="font-size: 28px; color: var(--color-primary); margin: 0;">0</h3>
+            </div>
+          </div>
+        </div>
+
+        <div class="card-ssu" style="background: #ffffff;">
+          <div style="display: flex; align-items: center; gap: 16px;">
+            <div style="width: 50px; height: 50px; border-radius: 12px; background: #fff8ee; color: var(--color-primary); display: flex; align-items: center; justify-content: center; font-size: 22px;">
+              <i class="fas fa-calendar-alt"></i>
+            </div>
+            <div>
+              <span style="font-size: 12px; color: var(--color-text-muted); font-weight: 600; text-transform: uppercase;">Match Schedules</span>
+              <h3 id="stat-schedule-count" style="font-size: 28px; color: var(--color-primary); margin: 0;">0</h3>
+            </div>
+          </div>
+        </div>
+
+        <div class="card-ssu" style="background: #ffffff;">
+          <div style="display: flex; align-items: center; gap: 16px;">
+            <div style="width: 50px; height: 50px; border-radius: 12px; background: #fff8ee; color: var(--color-primary); display: flex; align-items: center; justify-content: center; font-size: 22px;">
+              <i class="fas fa-user-graduate"></i>
+            </div>
+            <div>
+              <span style="font-size: 12px; color: var(--color-text-muted); font-weight: 600; text-transform: uppercase;">Coaches / Faculty</span>
+              <h3 id="stat-coaches-count" style="font-size: 28px; color: var(--color-primary); margin: 0;">0</h3>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Dashboard Tabs Navigation -->
+      <div class="portal-tabs-nav" style="margin-bottom: 24px;">
+        <button class="portal-tab-btn active" data-tab="gallery-tab">
+          <i class="fas fa-images"></i> Manage Gallery Photos
+        </button>
+        <button class="portal-tab-btn" data-tab="news-tab">
+          <i class="fas fa-bullhorn"></i> Manage Posts, Blogs & News
+        </button>
+        <button class="portal-tab-btn" data-tab="schedule-tab">
+          <i class="fas fa-calendar-check"></i> Manage Games & Match Schedules
+        </button>
+        <button class="portal-tab-btn" data-tab="coaches-tab">
+          <i class="fas fa-id-badge"></i> Manage Faculty & Coaches
+        </button>
+      </div>
+
+      <!-- TAB 1: GALLERY MANAGEMENT PANEL -->
+      <div id="gallery-tab" class="dashboard-tab-content card-ssu" style="background: #ffffff;">
+        <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 24px; flex-wrap: wrap; gap: 12px;">
+          <div>
+            <h2 style="font-size: 22px; color: var(--color-primary);">Sports Photo Gallery</h2>
+            <p style="font-size: 13px; color: var(--color-text-muted);">Add new photos or remove existing ones live on the public site.</p>
+          </div>
+          <button class="btn-primary" id="btn-open-add-gallery-modal">
+            <i class="fas fa-plus"></i> Add New Gallery Photo
+          </button>
+        </div>
+
+        <div style="overflow-x: auto;">
+          <table class="receipt-table">
+            <thead>
+              <tr style="background: var(--color-bg-block);">
+                <th style="padding: 12px;">Preview</th>
+                <th style="padding: 12px;">Title</th>
+                <th style="padding: 12px;">Category</th>
+                <th style="padding: 12px;">Actions</th>
+              </tr>
+            </thead>
+            <tbody id="admin-gallery-table-body">
+              <!-- Dynamically populated -->
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- TAB 2: POSTS / NEWS MANAGEMENT PANEL -->
+      <div id="news-tab" class="dashboard-tab-content card-ssu" style="display: none; background: #ffffff;">
+        <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 24px; flex-wrap: wrap; gap: 12px;">
+          <div>
+            <h2 style="font-size: 22px; color: var(--color-primary);">Posts, Blogs, Events & Achievements</h2>
+            <p style="font-size: 13px; color: var(--color-text-muted);">Create, edit, or delete news items with featured image highlights.</p>
+          </div>
+          <button class="btn-primary" id="btn-open-add-news-modal">
+            <i class="fas fa-plus"></i> Create New Post / News
+          </button>
+        </div>
+
+        <div style="overflow-x: auto;">
+          <table class="receipt-table">
+            <thead>
+              <tr style="background: var(--color-bg-block);">
+                <th style="padding: 12px;">Featured Image</th>
+                <th style="padding: 12px;">Title</th>
+                <th style="padding: 12px;">Category</th>
+                <th style="padding: 12px;">Summary</th>
+                <th style="padding: 12px;">Date</th>
+                <th style="padding: 12px;">Actions</th>
+              </tr>
+            </thead>
+            <tbody id="admin-news-table-body">
+              <!-- Dynamically populated -->
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- TAB 3: MATCH FIXTURES & GAMES SCHEDULE MANAGEMENT PANEL -->
+      <div id="schedule-tab" class="dashboard-tab-content card-ssu" style="display: none; background: #ffffff;">
+        <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 24px; flex-wrap: wrap; gap: 12px;">
+          <div>
+            <h2 style="font-size: 22px; color: var(--color-primary);">Intra & Inter Games & Match Schedules</h2>
+            <p style="font-size: 13px; color: var(--color-text-muted);">Add, edit, update, or delete tournament fixtures for Intra and Inter University sports.</p>
+          </div>
+          <button class="btn-primary" id="btn-open-add-schedule-modal">
+            <i class="fas fa-plus"></i> Add New Match Schedule
+          </button>
+        </div>
+
+        <div style="overflow-x: auto;">
+          <table class="receipt-table">
+            <thead>
+              <tr style="background: var(--color-bg-block);">
+                <th style="padding: 12px;">Tournament Type</th>
+                <th style="padding: 12px;">Date & Time</th>
+                <th style="padding: 12px;">Sport Event</th>
+                <th style="padding: 12px;">Teams / Matchup</th>
+                <th style="padding: 12px;">Venue / Ground</th>
+                <th style="padding: 12px;">Status</th>
+                <th style="padding: 12px;">Actions</th>
+              </tr>
+            </thead>
+            <tbody id="admin-schedule-table-body">
+              <!-- Dynamically populated -->
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- TAB 4: COACHES / FACULTY MANAGEMENT PANEL -->
+      <div id="coaches-tab" class="dashboard-tab-content card-ssu" style="display: none; background: #ffffff;">
+        <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 24px; flex-wrap: wrap; gap: 12px;">
+          <div>
+            <h2 style="font-size: 22px; color: var(--color-primary);">Coaches & Faculty Profiles</h2>
+            <p style="font-size: 13px; color: var(--color-text-muted);">Add, update, or remove trainer profiles displayed on the website.</p>
+          </div>
+          <button class="btn-primary" id="btn-open-add-coach-modal">
+            <i class="fas fa-plus"></i> Add New Coach Profile
+          </button>
+        </div>
+
+        <div style="overflow-x: auto;">
+          <table class="receipt-table">
+            <thead>
+              <tr style="background: var(--color-bg-block);">
+                <th style="padding: 12px;">Photo</th>
+                <th style="padding: 12px;">Name</th>
+                <th style="padding: 12px;">Role & Specialization</th>
+                <th style="padding: 12px;">Contact</th>
+                <th style="padding: 12px;">Actions</th>
+              </tr>
+            </thead>
+            <tbody id="admin-coaches-table-body">
+              <!-- Dynamically populated -->
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ADMIN MODALS -->
+
+  <!-- Modal 1: Add Gallery Photo -->
+  <div class="modal-overlay" id="modal-add-gallery">
+    <div class="modal-card">
+      <button type="button" class="modal-close-btn"><i class="fas fa-times"></i></button>
+      <h3 style="font-size: 22px; color: var(--color-primary); margin-bottom: 20px;">Add New Gallery Photo</h3>
+      <form id="form-add-gallery">
+        <div class="form-group" style="margin-bottom: 16px;">
+          <label class="form-label">Photo Title</label>
+          <input type="text" id="gal-input-title" class="form-input" required placeholder="e.g. Volleyball Inter-College Trophy">
+        </div>
+        <div class="form-group" style="margin-bottom: 16px;">
+          <label class="form-label">Category</label>
+          <select id="gal-input-category" class="form-select" required>
+            <option value="winners">Winners & Trophy Section</option>
+            <option value="ceremony">Closing Ceremony & Fest Highlights</option>
+            <option value="press">Newspaper Spotlight</option>
+            <option value="events">General Events & Fest</option>
+            <option value="cricket">Cricket & Basketball</option>
+            <option value="football">Football & Futsal</option>
+            <option value="volleyball">Volleyball</option>
+          </select>
+        </div>
+        <div class="form-group" style="margin-bottom: 24px;">
+          <label class="form-label">Image URL / File Path</label>
+          <input type="text" id="gal-input-url" class="form-input" required placeholder="e.g. https://images.unsplash.com/... or assets/photo.jpg">
+        </div>
+        <button type="submit" class="btn-primary" style="width: 100%; text-align: center; justify-content: center;">
+          <i class="fas fa-save"></i> Save Photo to Gallery
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <!-- Modal 2: Add/Edit Post News (with Featured Image URL) -->
+  <div class="modal-overlay" id="modal-news-form">
+    <div class="modal-card">
+      <button type="button" class="modal-close-btn"><i class="fas fa-times"></i></button>
+      <h3 id="news-modal-title" style="font-size: 22px; color: var(--color-primary); margin-bottom: 20px;">Create Post / News</h3>
+      <form id="form-news-save">
+        <input type="hidden" id="news-input-id">
+        <div class="form-group" style="margin-bottom: 16px;">
+          <label class="form-label">Post Title</label>
+          <input type="text" id="news-input-title" class="form-input" required placeholder="e.g. Collympics 2026 Registration Opened">
+        </div>
+        <div class="form-group" style="margin-bottom: 16px;">
+          <label class="form-label">Category / Tag</label>
+          <input type="text" id="news-input-category" class="form-input" required placeholder="e.g. Veerodaya 2026 / Cricket League">
+        </div>
+        <div class="form-group" style="margin-bottom: 16px;">
+          <label class="form-label">Featured Image URL</label>
+          <input type="text" id="news-input-imageurl" class="form-input" placeholder="e.g. https://images.unsplash.com/photo-1578269174936-2709b6aeb913">
+        </div>
+        <div class="form-group" style="margin-bottom: 16px;">
+          <label class="form-label">Summary Description</label>
+          <textarea id="news-input-summary" class="form-input" rows="3" required placeholder="Brief description of the announcement..."></textarea>
+        </div>
+        <div class="form-group" style="margin-bottom: 24px;">
+          <label class="form-label">Date String</label>
+          <input type="text" id="news-input-date" class="form-input" required placeholder="e.g. August 2026">
+        </div>
+        <button type="submit" class="btn-primary" style="width: 100%; text-align: center; justify-content: center;">
+          <i class="fas fa-save"></i> Save Post
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <!-- Modal 3: Add/Edit Match Schedule -->
+  <div class="modal-overlay" id="modal-schedule-form">
+    <div class="modal-card">
+      <button type="button" class="modal-close-btn"><i class="fas fa-times"></i></button>
+      <h3 id="sch-modal-title" style="font-size: 22px; color: var(--color-primary); margin-bottom: 20px;">Match Schedule Fixture</h3>
+      <form id="form-schedule-save">
+        <input type="hidden" id="sch-input-id">
+        <div class="form-group" style="margin-bottom: 16px;">
+          <label class="form-label">Tournament Type</label>
+          <select id="sch-input-type" class="form-select" required>
+            <option value="intra">Intra-University (Collympics)</option>
+            <option value="inter">Inter-University (Veerodaya 2026)</option>
+          </select>
+        </div>
+        <div class="form-group" style="margin-bottom: 16px;">
+          <label class="form-label">Date & Time</label>
+          <input type="text" id="sch-input-date" class="form-input" required placeholder="e.g. 28 Aug 2026 - 4:00 PM">
+        </div>
+        <div class="form-group" style="margin-bottom: 16px;">
+          <label class="form-label">Sport Event Name</label>
+          <input type="text" id="sch-input-sport" class="form-input" required placeholder="e.g. Volleyball Mens / Cricket T20">
+        </div>
+        <div class="form-group" style="margin-bottom: 16px;">
+          <label class="form-label">Teams / Matchup Details</label>
+          <input type="text" id="sch-input-matchup" class="form-input" required placeholder="e.g. FOAG Spikers vs FCIS Strikers">
+        </div>
+        <div class="form-group" style="margin-bottom: 16px;">
+          <label class="form-label">Venue / Ground</label>
+          <input type="text" id="sch-input-venue" class="form-input" required placeholder="e.g. SSU Synthetic Court 1">
+        </div>
+        <div class="form-group" style="margin-bottom: 24px;">
+          <label class="form-label">Status Badge</label>
+          <input type="text" id="sch-input-status" class="form-input" required placeholder="e.g. UPCOMING / CONFIRMED / SCHEDULED">
+        </div>
+        <button type="submit" class="btn-primary" style="width: 100%; text-align: center; justify-content: center;">
+          <i class="fas fa-save"></i> Save Match Schedule
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <!-- Modal 4: Add/Edit Coach Profile -->
+  <div class="modal-overlay" id="modal-coach-form">
+    <div class="modal-card">
+      <button type="button" class="modal-close-btn"><i class="fas fa-times"></i></button>
+      <h3 id="coach-modal-title" style="font-size: 22px; color: var(--color-primary); margin-bottom: 20px;">Coach / Faculty Profile</h3>
+      <form id="form-coach-save">
+        <input type="hidden" id="coach-input-id">
+        <div class="form-group" style="margin-bottom: 12px;">
+          <label class="form-label">Full Name</label>
+          <input type="text" id="coach-input-name" class="form-input" required placeholder="e.g. Pravat Kumar Nayak">
+        </div>
+        <div class="form-group" style="margin-bottom: 12px;">
+          <label class="form-label">Role Title</label>
+          <input type="text" id="coach-input-role" class="form-input" required placeholder="e.g. Cricket Head Coach">
+        </div>
+        <div class="form-group" style="margin-bottom: 12px;">
+          <label class="form-label">Years of Experience</label>
+          <input type="text" id="coach-input-exp" class="form-input" required placeholder="e.g. 10 Years Experience">
+        </div>
+        <div class="form-group" style="margin-bottom: 12px;">
+          <label class="form-label">Qualification & Certifications</label>
+          <input type="text" id="coach-input-qual" class="form-input" required placeholder="e.g. BCCI L2 Coach / NIS Diploma">
+        </div>
+        <div class="form-group" style="margin-bottom: 12px;">
+          <label class="form-label">Email ID</label>
+          <input type="email" id="coach-input-email" class="form-input" required placeholder="e.g. coach@srisriuniversity.edu.in">
+        </div>
+        <div class="form-group" style="margin-bottom: 12px;">
+          <label class="form-label">Phone Number</label>
+          <input type="text" id="coach-input-phone" class="form-input" required placeholder="e.g. +91 9876543210">
+        </div>
+        <div class="form-group" style="margin-bottom: 20px;">
+          <label class="form-label">Photo Image Path / URL</label>
+          <input type="text" id="coach-input-photo" class="form-input" required placeholder="e.g. profile photos/Prabhat Kumar Nayak.jpg">
+        </div>
+        <button type="submit" class="btn-primary" style="width: 100%; text-align: center; justify-content: center;">
+          <i class="fas fa-save"></i> Save Coach Profile
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <!-- Scripts -->
+  <script src="js/data-store.js"></script>
+  <script src="js/admin-portal.js"></script>
+</body>
+</html>
