@@ -6,7 +6,7 @@
 const SSU_STORAGE_KEYS = {
   GALLERY: 'ssu_sports_gallery_data_v2', // Updated key for fresh dataset sync
   NEWS: 'ssu_sports_news_data',
-  COACHES: 'ssu_sports_coaches_data_v6',
+  COACHES: 'ssu_sports_coaches_data_v7',
   SCHEDULES: 'ssu_sports_schedules_data_v2',
   AUTH: 'ssu_sports_admin_auth'
 };
@@ -74,19 +74,28 @@ const DEFAULT_NEWS = [
 
 const DEFAULT_COACHES = [
   {
+    id: 'coach-panda',
+    name: 'Purna Chandra Panda',
+    univRole: 'Co-ordinator DSW Office',
+    role: 'Sports Co-ordinator',
+    email: 'purnachandra.p@srisri.edu.in',
+    phone: '94395 41920',
+    photo: 'profile photos/Purnachandra Panda.jpg'
+  },
+  {
     id: 'coach-1',
-    name: 'Pravat Kumar Nayak',
-    univRole: 'Cricket Coach',
-    role: 'Cricket & Basketball Coach',
+    name: 'Prabhata Kumar Nayak',
+    univRole: 'Head Coach',
+    role: 'Cricket & Basket Ball',
     email: 'pravat.n@srisriuniversity.edu.in',
     phone: '',
     photo: 'profile photos/Prabhat Kumar Nayak.jpg'
   },
   {
     id: 'coach-2',
-    name: 'Udayabhanu Sundarray',
+    name: 'Udaya Bhanu Sundaray',
     univRole: 'Volleyball Coach',
-    role: 'Volleyball Head Coach',
+    role: 'Volleyball, Kabaddi, Kho Kho',
     email: 'Udaya.s@srisriuniversity.edu.in',
     phone: '',
     photo: 'profile photos/Uday Sundray.jpg'
@@ -95,19 +104,10 @@ const DEFAULT_COACHES = [
     id: 'coach-3',
     name: 'Satyabrata Nayak',
     univRole: 'Football Coach',
-    role: 'Football, Futsal, Cricket, Kho Kho Coach',
+    role: 'Football & Athletics',
     email: 'satyabrata.n@srisriuniversity.edu.in',
     phone: '',
     photo: 'profile photos/Satyabrata Nayak.jpg'
-  },
-  {
-    id: 'coach-4',
-    name: 'Asshis Kumar Parida',
-    univRole: 'Badminton Coach',
-    role: 'Badminton Coach',
-    email: 'ashis.parida@srisriuniversity.edu.in',
-    phone: '',
-    photo: ''
   }
 ];
 

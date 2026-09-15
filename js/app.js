@@ -306,6 +306,7 @@ function renderDynamicCoaches() {
           </div>
           <ul class="coach-details-list" style="margin-bottom: 0;">
             <li style="font-size: 12px;"><i class="fas fa-envelope"></i> ${item.email}</li>
+            ${item.phone ? `<li style="font-size: 12px;"><i class="fas fa-phone"></i> ${item.phone}</li>` : ''}
           </ul>
         </div>
       </div>
