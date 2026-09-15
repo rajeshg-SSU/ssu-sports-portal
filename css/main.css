@@ -1261,6 +1261,25 @@ input, select, textarea, .form-input {
     text-align: center !important;
     width: 100% !important;
   }
+
+  /* Mobile Text Justification for Card Descriptions, Lists & Guidelines */
+  .card-ssu p,
+  .card-ssu ol li,
+  .card-ssu ul li,
+  .card-description,
+  #guidelines ol li,
+  #guidelines p,
+  .core-card p,
+  .coach-card p,
+  .sports-card p {
+    text-align: justify !important;
+    text-justify: inter-word !important;
+  }
+
+  #guidelines ol {
+    padding-left: 18px !important;
+  }
 }
+
 
 
