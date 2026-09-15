@@ -1293,5 +1293,43 @@ input, select, textarea, .form-input {
   }
 }
 
+/* Collympics Hero Banner Section - Full Cover Display */
+.collympics-top-banner-section {
+  width: 100%;
+  position: relative;
+  overflow: hidden;
+  background: #ffffff;
+  padding: 0;
+  margin: 0;
+  line-height: 0;
+}
 
+.collympics-banner-wrapper {
+  width: 100%;
+  height: clamp(340px, 46vw, 640px);
+  position: relative;
+  overflow: hidden;
+  background: #ffffff;
+}
 
+.collympics-hero-banner-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center center;
+  display: block;
+  margin: 0;
+  padding: 0;
+}
+
+@media (max-width: 768px) {
+  .collympics-banner-wrapper {
+    height: 300px;
+  }
+}
+
+@media (max-width: 480px) {
+  .collympics-banner-wrapper {
+    height: 250px;
+  }
+}
