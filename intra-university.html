@@ -63,15 +63,13 @@
 
   <main>
     <!-- TOP COLLYMPICS OFFICIAL BANNER (HERO) SECTION -->
-    <section class="collympics-top-banner-section" style="width: 100%; background: #f8f9fa; position: relative; overflow: hidden; border-bottom: 2px solid var(--color-bg-medium);">
-      <div style="width: 100%; max-width: 1360px; margin: 0 auto; display: flex; justify-content: center; align-items: center; background: #ffffff;">
-        <img src="assets/collympics_11_hero_banner.png" alt="Collympics 11.0 - The Intra University Sports Fest Official Banner" style="width: 100%; height: auto; max-height: 520px; object-fit: contain; display: block;">
-      </div>
+    <section class="collympics-top-banner-section" style="width: 100%; position: relative; overflow: hidden; background: #ffffff; padding: 0; margin: 0; line-height: 0;">
+      <img src="assets/collympics_11_hero_banner.jpg" alt="Collympics 11.0 - The Intra University Sports Fest Official Banner" style="width: 100%; height: auto; display: block; object-fit: cover; margin: 0; padding: 0;">
 
       <!-- Hero Action & Live Registration Strip -->
-      <div style="background: linear-gradient(135deg, #1c0d06 0%, #3d1408 50%, #1c0d06 100%); border-top: 3px solid #fcb900; padding: 16px 24px; box-shadow: 0 4px 20px rgba(0,0,0,0.18);">
-        <div class="container-ssu" style="display: flex; align-items: center; justify-content: space-between; gap: 18px; flex-wrap: wrap;">
-          <div style="display: flex; align-items: center; gap: 14px; flex-wrap: wrap;">
+      <div class="hero-collympics-strip" style="background: linear-gradient(135deg, #1c0d06 0%, #3d1408 50%, #1c0d06 100%); border-top: 3px solid #fcb900; padding: 16px 24px; box-shadow: 0 4px 20px rgba(0,0,0,0.18); line-height: normal;">
+        <div class="container-ssu hero-collympics-strip-container" style="display: flex; align-items: center; justify-content: space-between; gap: 18px; flex-wrap: wrap;">
+          <div class="hero-strip-info" style="display: flex; align-items: center; gap: 14px; flex-wrap: wrap;">
             <div style="background: rgba(252, 185, 0, 0.18); border: 1.5px solid #fcb900; padding: 6px 14px; border-radius: 30px; display: inline-flex; align-items: center; gap: 8px;">
               <span style="display: inline-block; width: 8px; height: 8px; background: #22c55e; border-radius: 50%; box-shadow: 0 0 8px #22c55e;"></span>
               <span style="font-size: 12px; font-weight: 800; color: #fcb900; letter-spacing: 0.5px; text-transform: uppercase;">
@@ -83,7 +81,7 @@
             </span>
           </div>
 
-          <div style="display: flex; gap: 12px; align-items: center; flex-wrap: wrap;">
+          <div class="hero-strip-actions" style="display: flex; gap: 12px; align-items: center; flex-wrap: wrap;">
             <a href="https://app.srisriuniversity.edu.in/collympic-2026/" target="_blank" rel="noopener" class="btn-primary" style="background: #fcb900; color: #1c0d06 !important; font-weight: 800; font-size: 14px; padding: 10px 24px; border-radius: 30px; box-shadow: 0 4px 14px rgba(252,185,0,0.35); border: none; display: inline-flex; align-items: center; gap: 8px;">
               <i class="fas fa-bolt"></i> Register Now (Live)
             </a>
@@ -91,34 +89,6 @@
               <i class="fas fa-file-pdf" style="color: #fcb900;"></i> Download Official Brochure
             </a>
           </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- LIVE REGISTRATION URGENCY & EVENT SUMMARY TICKER -->
-    <section style="background: #ffffff; border-bottom: 2px solid var(--color-bg-medium); padding: 18px 24px; box-shadow: 0 4px 15px rgba(0,0,0,0.03);">
-      <div class="container-ssu" style="display: flex; justify-content: space-between; align-items: center; gap: 20px; flex-wrap: wrap;">
-        <div style="display: flex; align-items: center; gap: 14px; flex-wrap: wrap;">
-          <span style="background: #fee2e2; color: #b91c1c; padding: 6px 14px; border-radius: 20px; font-size: 13px; font-weight: 800; display: inline-flex; align-items: center; gap: 6px;">
-            <i class="fas fa-clock"></i> LAST DATE: 22ND SEPT 2026
-          </span>
-          <span style="font-size: 14px; color: var(--color-text); font-weight: 600;">
-            Tournament: <strong style="color: var(--color-primary);">26th Sept – 4th Oct 2026</strong> (9 Mega Days)
-          </span>
-          <span style="font-size: 14px; color: var(--color-text-muted); font-weight: 500;">
-            | Eligible: <strong>Students, Faculty & Staff of Sri Sri University</strong>
-          </span>
-        </div>
-        <div style="display: flex; align-items: center; gap: 10px;">
-          <span style="background: #ecfdf5; color: #047857; padding: 6px 12px; border-radius: 20px; font-size: 13px; font-weight: 700;">
-            <i class="fas fa-tag"></i> Entry Fee: ₹30 / player
-          </span>
-          <a href="assets/collympics_11_brochure.pdf" download="Collympics_11_SSU_Brochure.pdf" target="_blank" class="btn-outline" style="padding: 8px 16px; font-size: 13px; border-radius: 20px; display: inline-flex; align-items: center; gap: 6px;">
-            <i class="fas fa-file-pdf"></i> Download Brochure
-          </a>
-          <a href="https://app.srisriuniversity.edu.in/collympic-2026/" target="_blank" rel="noopener" class="btn-primary" style="padding: 8px 18px; font-size: 13px; border-radius: 20px;">
-            <i class="fas fa-edit"></i> Register
-          </a>
         </div>
       </div>
     </section>
@@ -838,7 +808,10 @@
 
   <!-- FOOTER -->
   <footer class="ssu-footer">
-    <div class="container-ssu">
+    <div class="container-ssu" style="text-align: center;">
+      <div style="margin-bottom: 16px;">
+        <img src="assets/ssu_official_logo.png" alt="Sri Sri University Sports Council Official Logo" style="height: 60px; width: auto; object-fit: contain;">
+      </div>
       <div class="footer-bottom" style="border-top: none; padding-top: 0;">
         <p>&copy; 2026 Sri Sri University Sports Council. All Rights Reserved. Designed for Learn Lead Serve initiative.</p>
       </div>

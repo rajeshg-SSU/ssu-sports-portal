@@ -1244,3 +1244,24 @@ input, select, textarea, .form-input {
     transform: translateY(0);
   }
 }
+
+/* Collympics Hero Strip & Mobile Center Alignment */
+@media (max-width: 768px) {
+  .hero-collympics-strip-container {
+    justify-content: center !important;
+    text-align: center !important;
+    flex-direction: column !important;
+    gap: 14px !important;
+  }
+  .hero-strip-info {
+    justify-content: center !important;
+    text-align: center !important;
+    width: 100% !important;
+  }
+  .hero-strip-actions {
+    justify-content: center !important;
+    text-align: center !important;
+    width: 100% !important;
+  }
+}
+
