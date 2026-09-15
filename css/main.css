@@ -1253,15 +1253,14 @@ input, select, textarea, .form-input {
     flex-direction: column !important;
     gap: 14px !important;
   }
-  .hero-strip-info {
-    justify-content: center !important;
-    text-align: center !important;
-    width: 100% !important;
-  }
-  .hero-strip-actions {
+  .hero-strip-info,
+  .hero-strip-actions,
+  .fees-summary-top,
+  .fees-summary-bottom {
     justify-content: center !important;
     text-align: center !important;
     width: 100% !important;
   }
 }
+
 
