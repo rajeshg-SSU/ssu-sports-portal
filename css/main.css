@@ -1274,10 +1274,9 @@ input, select, textarea, .form-input {
     width: 100% !important;
   }
 
-  /* Mobile Text Justification for Card Descriptions, Lists & Guidelines */
+  /* Mobile Text Justification for Card Descriptions, Paragraphs & Guidelines */
   .card-ssu p,
   .card-ssu ol li,
-  .card-ssu ul li,
   .card-description,
   #guidelines ol li,
   #guidelines p,
@@ -1286,6 +1285,27 @@ input, select, textarea, .form-input {
   .sports-card p {
     text-align: justify !important;
     text-justify: inter-word !important;
+  }
+
+  /* Explicitly left-align venues list and prevent awkward justification */
+  .campus-venues-list,
+  .campus-venues-list li,
+  .campus-venues-list div,
+  .campus-venues-list strong,
+  .campus-venues-list span {
+    text-align: left !important;
+    text-justify: none !important;
+  }
+
+  /* Mobile Footer Centering */
+  .ssu-footer,
+  .ssu-footer .container-ssu {
+    text-align: center !important;
+  }
+  .ssu-footer .footer-official-logo,
+  .ssu-footer img {
+    margin: 0 auto 16px auto !important;
+    display: block !important;
   }
 
   #guidelines ol {

@@ -74,15 +74,6 @@ const DEFAULT_NEWS = [
 
 const DEFAULT_COACHES = [
   {
-    id: 'coach-panda',
-    name: 'Purna Chandra Panda',
-    univRole: 'Co-ordinator DSW Office',
-    role: 'Sports Co-ordinator',
-    email: 'purnachandra.p@srisri.edu.in',
-    phone: '94395 41920',
-    photo: 'profile photos/Purnachandra Panda.jpg'
-  },
-  {
     id: 'coach-1',
     name: 'Prabhata Kumar Nayak',
     univRole: 'Head Coach',
@@ -117,6 +108,15 @@ const DEFAULT_COACHES = [
     email: 'ashis.parida@srisriuniversity.edu.in',
     phone: '',
     photo: ''
+  },
+  {
+    id: 'coach-panda',
+    name: 'Purna Chandra Panda',
+    univRole: 'Co-ordinator DSW Office',
+    role: 'Sports Co-ordinator',
+    email: 'purnachandra.p@srisri.edu.in',
+    phone: '94395 41920',
+    photo: 'profile photos/Purnachandra Panda.jpg'
   }
 ];
 
@@ -254,8 +254,8 @@ class SSUDataStore {
     }
     try {
       const parsed = JSON.parse(data);
-      const c4 = parsed.find(c => c.id === 'coach-4' || (c.name && c.name.includes('Parida')));
-      if (!Array.isArray(parsed) || parsed.length < 5 || !c4 || c4.photo !== '') {
+      const isPandaLast = Array.isArray(parsed) && parsed.length === 5 && parsed[4].id === 'coach-panda';
+      if (!isPandaLast) {
         localStorage.setItem(SSU_STORAGE_KEYS.COACHES, JSON.stringify(DEFAULT_COACHES));
         return DEFAULT_COACHES;
       }
