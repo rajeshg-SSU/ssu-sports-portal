@@ -304,9 +304,12 @@ function renderDynamicCoaches() {
           <div style="font-size: 12px; font-weight: 600; color: var(--color-secondary); margin-bottom: 12px;">
             <i class="fas fa-trophy"></i> ${item.role}
           </div>
-          <ul class="coach-details-list" style="margin-bottom: 0;">
-            <li style="font-size: 12px;"><i class="fas fa-envelope"></i> ${item.email}</li>
-            ${item.phone ? `<li style="font-size: 12px;"><i class="fas fa-phone"></i> ${item.phone}</li>` : ''}
+          <ul class="coach-details-list" style="margin-bottom: 0; padding: 0; list-style: none;">
+            <li style="font-size: 10.5px; display: flex; align-items: center; gap: 5px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;" title="${item.email}">
+              <i class="fas fa-envelope" style="font-size: 11px; color: var(--color-primary); width: 14px; flex-shrink: 0;"></i>
+              <span style="font-size: 10.5px; letter-spacing: -0.3px; color: var(--color-text-muted); overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">${item.email}</span>
+            </li>
+            ${item.phone ? `<li style="font-size: 11px; display: flex; align-items: center; gap: 5px; margin-top: 4px; white-space: nowrap;"><i class="fas fa-phone" style="font-size: 11px; color: var(--color-primary); width: 14px; flex-shrink: 0;"></i> <span style="color: var(--color-text-muted);">${item.phone}</span></li>` : ''}
           </ul>
         </div>
       </div>

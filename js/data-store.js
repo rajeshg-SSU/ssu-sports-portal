@@ -116,7 +116,7 @@ const DEFAULT_COACHES = [
     role: 'Badminton Coach',
     email: 'ashis.parida@srisriuniversity.edu.in',
     phone: '',
-    photo: 'profile photos/Asshis Kumar Parida.jpg'
+    photo: ''
   }
 ];
 
@@ -254,7 +254,8 @@ class SSUDataStore {
     }
     try {
       const parsed = JSON.parse(data);
-      if (!Array.isArray(parsed) || parsed.length < 5 || !parsed.some(c => c.id === 'coach-4' || (c.name && c.name.includes('Parida')))) {
+      const c4 = parsed.find(c => c.id === 'coach-4' || (c.name && c.name.includes('Parida')));
+      if (!Array.isArray(parsed) || parsed.length < 5 || !c4 || c4.photo !== '') {
         localStorage.setItem(SSU_STORAGE_KEYS.COACHES, JSON.stringify(DEFAULT_COACHES));
         return DEFAULT_COACHES;
       }
