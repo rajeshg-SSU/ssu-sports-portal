@@ -108,6 +108,15 @@ const DEFAULT_COACHES = [
     email: 'satyabrata.n@srisriuniversity.edu.in',
     phone: '',
     photo: 'profile photos/Satyabrata Nayak.jpg'
+  },
+  {
+    id: 'coach-4',
+    name: 'Asshis Kumar Parida',
+    univRole: 'Badminton Coach',
+    role: 'Badminton Coach',
+    email: 'ashis.parida@srisriuniversity.edu.in',
+    phone: '',
+    photo: 'profile photos/Asshis Kumar Parida.jpg'
   }
 ];
 
@@ -243,7 +252,17 @@ class SSUDataStore {
       localStorage.setItem(SSU_STORAGE_KEYS.COACHES, JSON.stringify(DEFAULT_COACHES));
       return DEFAULT_COACHES;
     }
-    return JSON.parse(data);
+    try {
+      const parsed = JSON.parse(data);
+      if (!Array.isArray(parsed) || parsed.length < 5 || !parsed.some(c => c.id === 'coach-4' || (c.name && c.name.includes('Parida')))) {
+        localStorage.setItem(SSU_STORAGE_KEYS.COACHES, JSON.stringify(DEFAULT_COACHES));
+        return DEFAULT_COACHES;
+      }
+      return parsed;
+    } catch (e) {
+      localStorage.setItem(SSU_STORAGE_KEYS.COACHES, JSON.stringify(DEFAULT_COACHES));
+      return DEFAULT_COACHES;
+    }
   }
 
   static saveCoaches(items) {
