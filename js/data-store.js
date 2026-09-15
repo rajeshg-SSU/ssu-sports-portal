@@ -136,7 +136,7 @@ const DEFAULT_SCHEDULES = [
     date: 'To Be Announced (TBA)',
     sport: 'Cricket T20 Match',
     matchup: 'FMS Royals vs FOHS Champions',
-    venue: 'SSU Main Cricket Oval',
+    venue: 'SSU Main Cricket Overall Ground',
     status: 'SCHEDULE ANNOUNCEMENT SOON'
   },
   {
