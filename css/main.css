@@ -953,11 +953,11 @@ html, body {
     overflow: hidden !important;
   }
   .header-container {
-    padding: 12px 16px;
+    padding: 14px 18px;
   }
   .ssu-logo-img {
-    height: 40px;
-    max-width: 170px;
+    height: 48px;
+    max-width: 190px;
   }
   .ssu-brand-name {
     display: none;
@@ -970,6 +970,10 @@ html, body {
   }
   .mobile-menu-toggle {
     display: block;
+    font-size: 26px;
+    padding: 6px 10px;
+    color: var(--color-primary);
+    cursor: pointer;
   }
 
   .hero-title {
@@ -1124,11 +1128,16 @@ html, body {
 
   /* Header & Navigation Fixes */
   .header-container {
-    padding: 10px 14px !important;
+    padding: 14px 18px !important;
+    min-height: 68px !important;
   }
   .ssu-logo-img {
-    height: 38px !important;
-    max-width: 150px !important;
+    height: 48px !important;
+    max-width: 190px !important;
+  }
+  .mobile-menu-toggle {
+    font-size: 28px !important;
+    padding: 6px 10px !important;
   }
   .header-hide-mobile {
     display: none !important;
@@ -1224,20 +1233,21 @@ html, body {
 /* Extra Small Mobile Devices (<480px) Header & Touch Sizing */
 @media (max-width: 480px) {
   .header-container {
-    padding: 8px 12px !important;
-    gap: 8px !important;
+    padding: 12px 16px !important;
+    min-height: 64px !important;
+    gap: 10px !important;
   }
   .ssu-logo-img {
-    height: 32px !important;
-    max-width: 120px !important;
+    height: 44px !important;
+    max-width: 160px !important;
   }
   .header-action-btn {
     padding: 6px 12px !important;
     font-size: 11px !important;
   }
   .mobile-menu-toggle {
-    font-size: 20px !important;
-    padding: 4px !important;
+    font-size: 26px !important;
+    padding: 6px 8px !important;
   }
 }
 
@@ -1307,6 +1317,16 @@ input, select, textarea, .form-input {
     margin: 0 auto 16px auto !important;
     display: block !important;
   }
+  .footer-col {
+    text-align: center !important;
+  }
+  .footer-col h4::after {
+    left: 50% !important;
+    transform: translateX(-50%) !important;
+  }
+  .footer-links {
+    align-items: center !important;
+  }
 
   #guidelines ol {
     padding-left: 18px !important;
@@ -1326,17 +1346,15 @@ input, select, textarea, .form-input {
 
 .collympics-banner-wrapper {
   width: 100%;
-  height: clamp(340px, 46vw, 640px);
   position: relative;
   overflow: hidden;
-  background: #ffffff;
+  background: #f8f9fa;
+  line-height: 0;
 }
 
 .collympics-hero-banner-img {
   width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: center center;
+  height: auto;
   display: block;
   margin: 0;
   padding: 0;
@@ -1344,12 +1362,88 @@ input, select, textarea, .form-input {
 
 @media (max-width: 768px) {
   .collympics-banner-wrapper {
-    height: 300px;
+    height: auto;
+  }
+  .collympics-hero-banner-img {
+    width: 100%;
+    height: auto;
   }
 }
 
 @media (max-width: 480px) {
   .collympics-banner-wrapper {
-    height: 250px;
+    height: auto;
+  }
+  .collympics-hero-banner-img {
+    width: 100%;
+    height: auto;
+  }
+}
+
+/* Collympics Action Buttons Layout */
+.collympics-banner-buttons {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  flex-wrap: wrap;
+  margin-top: 10px;
+}
+
+.banner-btn-top {
+  display: inline-flex;
+}
+
+.banner-btns-bottom {
+  display: inline-flex;
+  gap: 12px;
+  align-items: center;
+}
+
+@media (max-width: 768px) {
+  .collympics-banner-buttons {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    gap: 12px !important;
+    width: 100% !important;
+  }
+  .banner-btn-top {
+    display: flex !important;
+    justify-content: center !important;
+    width: 100% !important;
+  }
+  .banner-btn-top .btn-primary {
+    width: 100% !important;
+    max-width: 320px !important;
+    justify-content: center !important;
+    text-align: center !important;
+  }
+  .banner-btns-bottom {
+    display: flex !important;
+    flex-direction: row !important;
+    justify-content: center !important;
+    align-items: center !important;
+    gap: 10px !important;
+    width: 100% !important;
+  }
+  .banner-btns-bottom .btn-outline {
+    flex: 1 1 0px !important;
+    max-width: 190px !important;
+    padding: 10px 8px !important;
+    font-size: 12.5px !important;
+    text-align: center !important;
+    justify-content: center !important;
+    white-space: nowrap !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .banner-btns-bottom .btn-outline {
+    padding: 9px 6px !important;
+    font-size: 11.5px !important;
+    gap: 5px !important;
+  }
+  .banner-btns-bottom .btn-outline i {
+    font-size: 11px !important;
   }
 }
