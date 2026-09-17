@@ -1333,50 +1333,177 @@ input, select, textarea, .form-input {
   }
 }
 
-/* Collympics Hero Banner Section - Full Cover Display */
-.collympics-top-banner-section {
-  width: 100%;
+/* -----------------------------------
+   Collympics Custom Native Hero Section
+   ----------------------------------- */
+.collympics-custom-hero {
   position: relative;
+  width: 100%;
+  min-height: 334px;
+  background: #f8fafc;
   overflow: hidden;
-  background: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-bottom: 4px solid #fcb900;
   padding: 0;
   margin: 0;
-  line-height: 0;
 }
 
-.collympics-banner-wrapper {
+.hero-poly-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
   width: 100%;
+  height: 100%;
+  z-index: 1;
+  pointer-events: none;
+}
+
+.hero-facet-svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.hero-landmark-wing {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  height: 100%;
+  max-height: 334px;
+  z-index: 2;
+  display: flex;
+  align-items: flex-end;
+  pointer-events: none;
+}
+
+.hero-building-art {
+  height: 100%;
+  max-height: 334px;
+  width: auto;
+  object-fit: contain;
+  object-position: bottom left;
+  display: block;
+  opacity: 0.95;
+}
+
+.hero-athletics-wing {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  height: 100%;
+  max-height: 334px;
+  z-index: 2;
+  display: flex;
+  align-items: flex-end;
+  pointer-events: none;
+}
+
+.hero-athletes-art {
+  height: 100%;
+  max-height: 334px;
+  width: auto;
+  object-fit: contain;
+  object-position: bottom right;
+  display: block;
+}
+
+.hero-brand-stage {
   position: relative;
-  overflow: hidden;
-  background: #f8f9fa;
-  line-height: 0;
+  z-index: 5;
+  text-align: center;
+  max-width: 580px;
+  width: 100%;
+  padding: 20px 16px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-.collympics-hero-banner-img {
-  width: 100%;
+.hero-emblem-art {
+  max-width: 490px;
+  width: 92%;
   height: auto;
   display: block;
-  margin: 0;
-  padding: 0;
+  margin: 0 auto;
+  filter: drop-shadow(0 4px 16px rgba(0,0,0,0.06));
 }
 
+/* Tablet & Smaller Screens */
+@media (max-width: 1024px) {
+  .collympics-custom-hero {
+    min-height: 290px;
+  }
+  .hero-landmark-wing,
+  .hero-building-art {
+    max-height: 270px;
+  }
+  .hero-building-art {
+    opacity: 0.75;
+  }
+  .hero-athletics-wing,
+  .hero-athletes-art {
+    max-height: 270px;
+  }
+  .hero-athletes-art {
+    opacity: 0.85;
+  }
+  .hero-emblem-art {
+    max-width: 420px;
+  }
+}
+
+/* Mobile Screens (<768px) */
 @media (max-width: 768px) {
-  .collympics-banner-wrapper {
-    height: auto;
+  .collympics-custom-hero {
+    min-height: 240px;
+    padding: 16px 12px;
   }
-  .collympics-hero-banner-img {
-    width: 100%;
-    height: auto;
+  .hero-landmark-wing {
+    max-height: 210px;
+    opacity: 0.35;
+  }
+  .hero-building-art {
+    max-height: 210px;
+  }
+  .hero-athletics-wing {
+    max-height: 210px;
+    opacity: 0.4;
+  }
+  .hero-athletes-art {
+    max-height: 210px;
+  }
+  .hero-emblem-art {
+    max-width: 350px;
+    width: 96%;
   }
 }
 
+/* Extra Small Phones (<480px) */
 @media (max-width: 480px) {
-  .collympics-banner-wrapper {
-    height: auto;
+  .collympics-custom-hero {
+    min-height: 200px;
+    padding: 14px 8px;
   }
-  .collympics-hero-banner-img {
+  .hero-landmark-wing {
+    max-height: 160px;
+    opacity: 0.22;
+  }
+  .hero-building-art {
+    max-height: 160px;
+  }
+  .hero-athletics-wing {
+    max-height: 160px;
+    opacity: 0.25;
+  }
+  .hero-athletes-art {
+    max-height: 160px;
+  }
+  .hero-emblem-art {
+    max-width: 290px;
     width: 100%;
-    height: auto;
   }
 }
 

@@ -62,11 +62,53 @@
   </header>
 
   <main>
-    <!-- TOP COLLYMPICS OFFICIAL BANNER (HERO) SECTION -->
-    <section class="collympics-top-banner-section">
-      <div class="collympics-banner-wrapper">
-        <img src="assets/collympics_11_hero_banner.jpg" alt="Collympics 11.0 - The Intra University Sports Fest Official Banner" class="collympics-hero-banner-img">
+    <!-- TOP COLLYMPICS CUSTOM DESIGNED HERO SECTION -->
+    <section class="collympics-custom-hero">
+      <!-- Full-Width Geometric Polygonal Facets Background -->
+      <div class="hero-poly-bg">
+        <svg viewBox="0 0 1440 334" preserveAspectRatio="none" class="hero-facet-svg">
+          <defs>
+            <linearGradient id="facetA" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stop-color="#ffffff"/>
+              <stop offset="100%" stop-color="#f1f4f8"/>
+            </linearGradient>
+            <linearGradient id="facetB" x1="100%" y1="0%" x2="0%" y2="100%">
+              <stop offset="0%" stop-color="#f8fafc"/>
+              <stop offset="100%" stop-color="#e9edf2"/>
+            </linearGradient>
+            <linearGradient id="facetC" x1="0%" y1="100%" x2="100%" y2="0%">
+              <stop offset="0%" stop-color="#f5f7fa"/>
+              <stop offset="100%" stop-color="#ffffff"/>
+            </linearGradient>
+          </defs>
+          <polygon points="0,0 420,0 240,334 0,334" fill="url(#facetA)" opacity="0.95"/>
+          <polygon points="420,0 720,195 240,334" fill="url(#facetB)" opacity="0.85"/>
+          <polygon points="420,0 1020,0 720,195" fill="url(#facetC)" opacity="0.95"/>
+          <polygon points="1020,0 1440,0 1440,334 1200,334" fill="url(#facetA)" opacity="0.95"/>
+          <polygon points="720,195 1020,0 1200,334" fill="url(#facetB)" opacity="0.85"/>
+          <polygon points="240,334 720,195 1200,334 720,334" fill="url(#facetA)" opacity="0.95"/>
+          
+          <polyline points="0,250 480,0 960,334 1440,0" fill="none" stroke="rgba(255,255,255,0.95)" stroke-width="2.5"/>
+          <polyline points="220,334 720,35 1220,334" fill="none" stroke="rgba(225,232,240,0.7)" stroke-width="2"/>
+          <polyline points="0,80 540,334 1080,0 1440,230" fill="none" stroke="rgba(255,255,255,0.85)" stroke-width="2"/>
+        </svg>
       </div>
+
+      <!-- Left Landmark Wing: Sri Sri University Building Illustration -->
+      <div class="hero-landmark-wing">
+        <img src="assets/collympics_building_art.png" alt="Sri Sri University Campus Architecture" class="hero-building-art">
+      </div>
+
+      <!-- Center Hero Stage: Official Collympics Branding Emblem -->
+      <div class="hero-brand-stage">
+        <img src="assets/collympics_11_emblem.png" alt="Collympics 11.0 - The Intra University Sports Fest, Sri Sri University" class="hero-emblem-art">
+      </div>
+
+      <!-- Right Athletic Wing: Dynamic Sports Figures -->
+      <div class="hero-athletics-wing">
+        <img src="assets/collympics_athletes_art.png" alt="Collympics Athletes in Action" class="hero-athletes-art">
+      </div>
+    </section>
 
       <!-- Hero Action & Live Registration Strip -->
       <div class="hero-collympics-strip" style="background: linear-gradient(135deg, #1c0d06 0%, #3d1408 50%, #1c0d06 100%); border-top: 3px solid #fcb900; padding: 16px 24px; box-shadow: 0 4px 20px rgba(0,0,0,0.18); line-height: normal;">
