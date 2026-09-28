@@ -813,7 +813,7 @@
         let lb='';
         d.contingent.forEach(t=>{
           const rc = t.rank<=3 ? ' sb-r'+t.rank : '';
-          lb+=`<div class="sb-card${rc}"><div class="sb-badge">${MEDALS[t.rank]||'#'+t.rank}</div><div style="flex:1"><div class="sb-name">${t.name}</div><div style="font-size:12px;color:#d4a373;margin-top:2px;font-family:var(--font-sans)">Total Points</div></div><div class="sb-total">${t.total_points}</div></div>`;
+          lb+=`<div class="sb-card${rc}"><div class="sb-badge">#${t.rank}</div><div style="flex:1"><div class="sb-name">${t.name}</div><div style="font-size:12px;color:#d4a373;margin-top:2px;font-family:var(--font-sans)">Total Points</div></div><div class="sb-total">${t.total_points}</div></div>`;
         });
         const lbEl = document.getElementById('sb-leaderboard');
         if (lbEl) lbEl.innerHTML = lb;
