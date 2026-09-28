@@ -40,6 +40,7 @@
           <li><a href="intra-university.html" class="nav-link">Collympics 11.0 (Intra)</a></li>
           <li><a href="inter-university.html" class="nav-link">Veerodaya (Inter)</a></li>
           <li><a href="#collympics-spotlight" class="nav-link" style="color: #b88600; font-weight: 700;"><i class="fas fa-fire"></i> Collympics 11.0</a></li>
+          <li><a href="#live-scoreboard" class="nav-link" style="color: #fcb900; font-weight: 700;"><i class="fas fa-chart-bar"></i> Live Scoreboard</a></li>
           <li><a href="#gallery" class="nav-link">Gallery</a></li>
           <li><a href="#dsw-dean" class="nav-link">DSW Dean</a></li>
           <li><a href="#coaches" class="nav-link">Coaches</a></li>
@@ -187,6 +188,110 @@
           </div>
         </div>
       </div>
+    </section>
+
+    <!-- LIVE SCOREBOARD SECTION — COLLYMPICS 11.0 -->
+    <section class="section-ssu" id="live-scoreboard" style="background: linear-gradient(135deg, #1c0d06 0%, #3d1408 50%, #220803 100%); color: #ffffff; padding: 65px 24px; position: relative; overflow: hidden; border-top: 3px solid #fcb900; border-bottom: 3px solid #fcb900;">
+      <div class="container-ssu">
+        <div class="section-header" style="text-align: center; margin-bottom: 32px;">
+          <div style="display: inline-flex; align-items: center; gap: 8px; background: rgba(252, 185, 0, 0.18); border: 1.5px solid #fcb900; padding: 6px 16px; border-radius: 30px; font-size: 12px; font-weight: 800; color: #fcb900; margin-bottom: 12px; text-transform: uppercase; letter-spacing: 0.5px;">
+            <i class="fas fa-trophy"></i> LIVE STANDINGS
+          </div>
+          <h2 class="section-title" style="color: #ffffff; font-size: clamp(26px, 3.2vw, 38px); font-family: var(--font-heading); font-weight: 900; margin-bottom: 10px;">
+            COLLYMPICS 11.0: <span style="background: linear-gradient(135deg, #fcb900, #ff8c00); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">LIVE SCOREBOARD</span> 🔥
+          </h2>
+          <p class="section-description" style="color: #f1e2cc; font-size: 16px; max-width: 650px; margin: 0 auto 16px;">
+            Real-time department-wise scores and rankings. Auto-refreshes every 30 seconds.
+          </p>
+          <div style="display: inline-flex; align-items: center; gap: 8px; background: rgba(220, 38, 38, 0.2); border: 1.5px solid #ef4444; padding: 5px 16px; border-radius: 20px; font-size: 12px; color: #fca5a5; font-weight: 800; letter-spacing: 0.5px; font-family: var(--font-sans);">
+            <span style="width: 8px; height: 8px; background: #ef4444; border-radius: 50%; display: inline-block; animation: livePulse 1.5s infinite; box-shadow: 0 0 8px #ef4444;"></span>
+            LIVE
+          </div>
+        </div>
+
+        <!-- Last Updated -->
+        <div id="sb-last-updated" style="text-align: center; color: #d4a373; font-size: 13.5px; margin-bottom: 24px; font-family: var(--font-sans); font-weight: 500;"></div>
+
+        <!-- Loading State -->
+        <div id="sb-loading" style="text-align: center; padding: 40px; color: #f1e2cc; font-family: var(--font-sans);">
+          <div style="width: 40px; height: 40px; border: 4px solid rgba(252,185,0,0.25); border-top-color: #fcb900; border-radius: 50%; animation: sbSpin 0.8s linear infinite; margin: 0 auto 15px;"></div>
+          Loading scores...
+        </div>
+
+        <!-- Scoreboard Content (hidden until loaded) -->
+        <div id="sb-content" style="display: none;">
+
+          <!-- Leaderboard Cards -->
+          <h3 style="font-size: 20px; color: #fcb900; margin-bottom: 16px; padding-bottom: 10px; border-bottom: 2px solid rgba(252,185,0,0.3); font-family: var(--font-heading); display: flex; align-items: center; gap: 8px;">
+            <i class="fas fa-medal" style="color: #fcb900;"></i> Contingent Leaderboard
+          </h3>
+          <div id="sb-leaderboard" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(340px, 1fr)); gap: 15px; margin-bottom: 35px;"></div>
+
+          <!-- Score Table -->
+          <h3 style="font-size: 20px; color: #fcb900; margin-bottom: 16px; padding-bottom: 10px; border-bottom: 2px solid rgba(252,185,0,0.3); font-family: var(--font-heading); display: flex; align-items: center; gap: 8px;">
+            <i class="fas fa-table" style="color: #fcb900;"></i> Sport-wise Score Breakdown
+          </h3>
+          <div style="overflow-x: auto; margin-bottom: 35px; border-radius: 14px; border: 1.5px solid rgba(252,185,0,0.3); background: rgba(0,0,0,0.25);">
+            <table id="sb-table" style="width: 100%; border-collapse: collapse; font-size: 14px; font-family: var(--font-sans);">
+              <thead id="sb-thead"></thead>
+              <tbody id="sb-tbody"></tbody>
+            </table>
+          </div>
+
+          <!-- Friendly Participants -->
+          <h3 style="font-size: 20px; color: #fcb900; margin-bottom: 16px; padding-bottom: 10px; border-bottom: 2px solid rgba(252,185,0,0.3); font-family: var(--font-heading); display: flex; align-items: center; gap: 8px;">
+            <i class="fas fa-handshake" style="color: #fcb900;"></i> Friendly Participants
+          </h3>
+          <div id="sb-friendly" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 14px; margin-bottom: 20px;"></div>
+        </div>
+      </div>
+
+      <style>
+        @keyframes livePulse { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:0.4;transform:scale(0.8)} }
+        @keyframes sbSpin { to{transform:rotate(360deg)} }
+
+        /* Leaderboard Cards */
+        .sb-card { display:flex; align-items:center; gap:16px; padding:16px 20px; background:rgba(255,255,255,0.06); border:1px solid rgba(252,185,0,0.22); border-radius:14px; transition:all 0.35s ease; font-family:var(--font-sans); backdrop-filter:blur(8px); }
+        .sb-card:hover { background:rgba(255,255,255,0.12); border-color:#fcb900; transform:translateY(-3px); box-shadow:0 10px 25px rgba(0,0,0,0.4); }
+        .sb-card.sb-r1 { background:linear-gradient(135deg,rgba(252,185,0,0.22),rgba(252,185,0,0.06)); border:1.5px solid #fcb900; box-shadow:0 4px 20px rgba(252,185,0,0.2); }
+        .sb-card.sb-r2 { background:linear-gradient(135deg,rgba(226,232,240,0.18),rgba(226,232,240,0.04)); border:1.5px solid rgba(226,232,240,0.45); }
+        .sb-card.sb-r3 { background:linear-gradient(135deg,rgba(205,127,50,0.22),rgba(205,127,50,0.05)); border:1.5px solid rgba(205,127,50,0.45); }
+
+        .sb-badge { width:48px; height:48px; display:flex; align-items:center; justify-content:center; border-radius:12px; font-size:1.3rem; font-weight:800; flex-shrink:0; background:rgba(255,255,255,0.08); color:#f1e2cc; border:1px solid rgba(255,255,255,0.15); }
+        .sb-r1 .sb-badge { background:linear-gradient(135deg,#fcb900,#e65100); color:#000000; box-shadow:0 0 18px rgba(252,185,0,0.4); border:none; }
+        .sb-r2 .sb-badge { background:linear-gradient(135deg,#e2e8f0,#94a3b8); color:#0f172a; border:none; }
+        .sb-r3 .sb-badge { background:linear-gradient(135deg,#cd7f32,#8b4513); color:#ffffff; border:none; }
+
+        .sb-name { font-size:1.2rem; font-weight:800; color:#ffffff; }
+        .sb-r1 .sb-name { color:#fcb900; }
+        .sb-r2 .sb-name { color:#ffffff; }
+        .sb-r3 .sb-name { color:#f6d2a8; }
+
+        .sb-total { font-size:1.85rem; font-weight:900; color:#fcb900; text-align:right; min-width:60px; }
+        .sb-r1 .sb-total { color:#fcb900; text-shadow:0 0 12px rgba(252,185,0,0.4); }
+        .sb-r2 .sb-total { color:#e2e8f0; }
+        .sb-r3 .sb-total { color:#cd7f32; }
+
+        /* Score Table */
+        #sb-table thead th { background:linear-gradient(90deg, #3d1408, #2b0e06); color:#fcb900; font-weight:800; padding:13px 10px; text-align:center; border-bottom:2px solid #fcb900; white-space:nowrap; font-size:12.5px; text-transform:uppercase; letter-spacing:0.5px; }
+        #sb-table thead th:first-child, #sb-table thead th:nth-child(2) { text-align:left; padding-left:16px; }
+        #sb-table tbody tr { transition:background 0.25s; border-bottom:1px solid rgba(255,255,255,0.07); }
+        #sb-table tbody tr:hover { background:rgba(252,185,0,0.08); }
+        #sb-table tbody td { padding:12px 10px; text-align:center; color:#f1e2cc; }
+        #sb-table tbody td:first-child { font-weight:800; color:#fcb900; text-align:center; width:50px; }
+        #sb-table tbody td:nth-child(2) { text-align:left; padding-left:16px; font-weight:700; color:#ffffff; }
+        #sb-table tbody td:last-child { font-weight:900; color:#fcb900; font-size:16px; background:rgba(252,185,0,0.06); }
+        #sb-table tbody td.sb-scored { color:#4ade80; font-weight:800; }
+
+        /* Friendly Cards */
+        .sb-friendly-card { display:flex; align-items:center; justify-content:space-between; padding:15px 20px; background:rgba(255,255,255,0.06); border:1px solid rgba(252,185,0,0.22); border-radius:12px; font-family:var(--font-sans); transition:all 0.3s; }
+        .sb-friendly-card:hover { background:rgba(255,255,255,0.1); border-color:#fcb900; transform:translateY(-2px); }
+
+        @media(max-width:768px) {
+          #sb-leaderboard { grid-template-columns:1fr !important; }
+          #sb-friendly { grid-template-columns:1fr !important; }
+        }
+      </style>
     </section>
 
     <!-- 2. ABOUT SSU SPORTS COUNCIL SECTION -->
@@ -528,6 +633,218 @@
       </div>
     </div>
   </footer>
+
+  <!-- Scoreboard JS (Connected to Google Sheets) -->
+  <script>
+  (function(){
+    const SHEET_CSV_URL = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vTSJGaF1oYhFgqyBFoWHdzcVBkvKeAYPIm7b4BNSivYiAmugRqVaLMY7Ci-qe3kfQ/pub?output=csv';
+
+    const SB_SPORTS = {
+      cricket:'Cricket', volley_ball:'Volley Ball', throw_ball:'Throw Ball',
+      basket_ball:'Basket Ball', kho_kho:'Kho-Kho', kabaddi:'Kabaddi',
+      tug_of_war:'Tug of War', badminton:'Badminton', power_lifting:'Power Lifting',
+      indoor_game:'Indoor Game', athletic:'Athletic', esports:'Esports'
+    };
+    const SK = Object.keys(SB_SPORTS);
+    const MEDALS = {1:'🥇',2:'🥈',3:'🥉'};
+
+    const SPORT_NAME_TO_KEY = {
+      'cricket':'cricket',
+      'volley ball':'volley_ball', 'volleyball':'volley_ball',
+      'throw ball':'throw_ball', 'throwball':'throw_ball',
+      'basket ball':'basket_ball', 'basketball':'basket_ball',
+      'kho-kho':'kho_kho', 'khokho':'kho_kho', 'kho kho':'kho_kho',
+      'kabaddi':'kabaddi',
+      'tug of war':'tug_of_war',
+      'badminton':'badminton',
+      'power lifting':'power_lifting', 'powerlifting':'power_lifting',
+      'indoor game':'indoor_game', 'indoor games':'indoor_game',
+      'athletic':'athletic', 'athletics':'athletic',
+      'esports':'esports', 'e-sports':'esports'
+    };
+
+    function parseCSVLine(line) {
+      const result = [];
+      let current = '';
+      let inQuotes = false;
+      for (let i = 0; i < line.length; i++) {
+        const ch = line[i];
+        if (ch === '"') {
+          if (inQuotes && line[i + 1] === '"') { current += '"'; i++; }
+          else { inQuotes = !inQuotes; }
+        } else if (ch === ',' && !inQuotes) {
+          result.push(current.trim());
+          current = '';
+        } else {
+          current += ch;
+        }
+      }
+      result.push(current.trim());
+      return result;
+    }
+
+    function parseSheetCSV(csvText) {
+      const lines = csvText.split(/\r?\n/).map(l => l.trim()).filter(l => l.length > 0);
+      let headerRowIndex = -1;
+      let headers = [];
+
+      for (let i = 0; i < lines.length; i++) {
+        const cols = parseCSVLine(lines[i]);
+        const dIdx = cols.findIndex(c => c.toLowerCase() === 'department');
+        if (dIdx !== -1) {
+          headerRowIndex = i;
+          headers = cols.map(c => c.trim());
+          break;
+        }
+      }
+
+      if (headerRowIndex === -1) throw new Error('Header row not found in CSV');
+
+      const deptCol = headers.findIndex(c => c.toLowerCase() === 'department');
+      const totalCol = headers.findIndex(c => c.toLowerCase().includes('total'));
+
+      const sportColMap = {};
+      headers.forEach((h, colIdx) => {
+        const norm = h.toLowerCase().trim();
+        if (SPORT_NAME_TO_KEY[norm]) {
+          sportColMap[SPORT_NAME_TO_KEY[norm]] = colIdx;
+        }
+      });
+
+      const contingent = [];
+      const friendly = [];
+      let inFriendly = false;
+
+      for (let i = headerRowIndex + 1; i < lines.length; i++) {
+        const row = parseCSVLine(lines[i]);
+        const rowText = lines[i].toLowerCase();
+
+        if (rowText.includes('friendly participant')) {
+          inFriendly = true;
+          continue;
+        }
+        if (rowText.includes('leaderboard') || rowText.includes('auto-ranked')) {
+          break;
+        }
+
+        const teamName = row[deptCol] || (row[1] ? row[1] : '');
+        if (!teamName || teamName.toLowerCase() === 'department' || teamName === 'Sn') continue;
+
+        if (!inFriendly) {
+          const teamObj = { name: teamName };
+          let computedTotal = 0;
+
+          SK.forEach(key => {
+            const cIdx = sportColMap[key];
+            const val = (cIdx !== undefined && row[cIdx]) ? parseInt(row[cIdx], 10) || 0 : 0;
+            teamObj[key] = val;
+            computedTotal += val;
+          });
+
+          const sheetTotal = totalCol !== -1 && row[totalCol] ? parseInt(row[totalCol], 10) : NaN;
+          teamObj.total_points = !isNaN(sheetTotal) ? sheetTotal : computedTotal;
+          contingent.push(teamObj);
+        } else {
+          const pts = totalCol !== -1 && row[totalCol] ? parseInt(row[totalCol], 10) || 0 : (parseInt(row[2], 10) || 0);
+          friendly.push({ name: teamName, total_points: pts });
+        }
+      }
+
+      contingent.sort((a, b) => {
+        if (b.total_points === a.total_points) return a.name.localeCompare(b.name);
+        return b.total_points - a.total_points;
+      });
+
+      let currentRank = 1;
+      contingent.forEach((team, idx) => {
+        if (idx > 0 && team.total_points < contingent[idx - 1].total_points) {
+          currentRank = idx + 1;
+        }
+        team.rank = currentRank;
+      });
+
+      return {
+        contingent: contingent,
+        friendly: friendly,
+        last_updated: new Date().toISOString()
+      };
+    }
+
+    // Fallback data
+    const FALLBACK = {
+      contingent:[
+        {name:"FET",cricket:0,volley_ball:0,throw_ball:0,basket_ball:0,kho_kho:75,kabaddi:0,tug_of_war:0,badminton:0,power_lifting:0,indoor_game:0,athletic:0,esports:10,total_points:85,rank:1},
+        {name:"FOAG",cricket:0,volley_ball:0,throw_ball:0,basket_ball:0,kho_kho:50,kabaddi:0,tug_of_war:0,badminton:5,power_lifting:0,indoor_game:0,athletic:0,esports:0,total_points:55,rank:2},
+        {name:"FHW",cricket:0,volley_ball:0,throw_ball:0,basket_ball:0,kho_kho:25,kabaddi:0,tug_of_war:0,badminton:0,power_lifting:0,indoor_game:0,athletic:0,esports:0,total_points:25,rank:3},
+        {name:"FMS",cricket:0,volley_ball:0,throw_ball:0,basket_ball:0,kho_kho:0,kabaddi:0,tug_of_war:0,badminton:10,power_lifting:0,indoor_game:0,athletic:0,esports:5,total_points:15,rank:4},
+        {name:"FOA",cricket:0,volley_ball:0,throw_ball:0,basket_ball:0,kho_kho:0,kabaddi:0,tug_of_war:0,badminton:0,power_lifting:0,indoor_game:0,athletic:0,esports:0,total_points:0,rank:5},
+        {name:"FACIS",cricket:0,volley_ball:0,throw_ball:0,basket_ball:0,kho_kho:0,kabaddi:0,tug_of_war:0,badminton:0,power_lifting:0,indoor_game:0,athletic:0,esports:0,total_points:0,rank:5},
+        {name:"FCBS",cricket:0,volley_ball:0,throw_ball:0,basket_ball:0,kho_kho:0,kabaddi:0,tug_of_war:0,badminton:0,power_lifting:0,indoor_game:0,athletic:0,esports:0,total_points:0,rank:5},
+        {name:"BAMS",cricket:0,volley_ball:0,throw_ball:0,basket_ball:0,kho_kho:0,kabaddi:0,tug_of_war:0,badminton:0,power_lifting:0,indoor_game:0,athletic:0,esports:0,total_points:0,rank:5},
+        {name:"SSCN",cricket:0,volley_ball:0,throw_ball:0,basket_ball:0,kho_kho:0,kabaddi:0,tug_of_war:0,badminton:0,power_lifting:0,indoor_game:0,athletic:0,esports:0,total_points:0,rank:5}
+      ],
+      friendly:[{name:"Admin Staff",total_points:0},{name:"Faculty",total_points:0},{name:"Kitchen Staff",total_points:0},{name:"Security",total_points:0}],
+      last_updated: new Date().toISOString()
+    };
+
+    async function fetchData(){
+      try {
+        const fetchUrl = SHEET_CSV_URL + '&_t=' + Date.now();
+        const r = await fetch(fetchUrl);
+        if(!r.ok) throw new Error('Google Sheet HTTP error: ' + r.status);
+        const csvText = await r.text();
+        return parseSheetCSV(csvText);
+      } catch(e) {
+        console.warn('Google Sheet fetch error, falling back to cached/fallback:', e);
+        return FALLBACK;
+      }
+    }
+
+    function render(d){
+      let lb='';
+      d.contingent.forEach(t=>{
+        const rc = t.rank<=3 ? ' sb-r'+t.rank : '';
+        lb+=`<div class="sb-card${rc}"><div class="sb-badge">${MEDALS[t.rank]||'#'+t.rank}</div><div style="flex:1"><div class="sb-name">${t.name}</div><div style="font-size:12px;color:#d4a373;margin-top:2px;font-family:var(--font-sans)">Total Points</div></div><div class="sb-total">${t.total_points}</div></div>`;
+      });
+      document.getElementById('sb-leaderboard').innerHTML=lb;
+
+      let th='<tr><th>Rank</th><th>Department</th>';
+      SK.forEach(k=>{th+=`<th>${SB_SPORTS[k]}</th>`});
+      th+='<th>Total</th></tr>';
+      document.getElementById('sb-thead').innerHTML=th;
+
+      let tb='';
+      d.contingent.forEach(t=>{
+        tb+=`<tr><td>${t.rank}</td><td>${t.name}</td>`;
+        SK.forEach(k=>{ const v=t[k]||0; tb+=`<td${v>0?' class="sb-scored"':''}>${v}</td>`; });
+        tb+=`<td>${t.total_points}</td></tr>`;
+      });
+      document.getElementById('sb-tbody').innerHTML=tb;
+
+      let fr='';
+      d.friendly.forEach(t=>{
+        fr+=`<div class="sb-friendly-card"><span style="font-weight:700;color:#f1e2cc">${t.name}</span><span style="font-size:1.5rem;font-weight:900;color:#4ade80">${t.total_points}</span></div>`;
+      });
+      document.getElementById('sb-friendly').innerHTML=fr;
+
+      if(d.last_updated){
+        const dt=new Date(d.last_updated);
+        document.getElementById('sb-last-updated').innerHTML='Last Updated: <span style="color:#fcb900;font-weight:700">'+dt.toLocaleString('en-IN',{day:'2-digit',month:'short',year:'numeric',hour:'2-digit',minute:'2-digit',hour12:true})+ ' IST</span> <span style="font-size:12px;color:#22c55e;margin-left:8px;"><i class="fas fa-sync-alt"></i> Synced with Google Sheets</span>';
+      }
+
+      document.getElementById('sb-loading').style.display='none';
+      document.getElementById('sb-content').style.display='block';
+    }
+
+    async function load(){ render(await fetchData()); }
+
+    document.addEventListener('DOMContentLoaded',()=>{
+      load();
+      // Auto-poll Google Sheet every 20 seconds
+      setInterval(load, 20000);
+    });
+  })();
+  </script>
 
   <script src="js/data-store.js"></script>
   <script src="js/app.js"></script>
