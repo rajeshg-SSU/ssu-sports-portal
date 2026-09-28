@@ -1076,6 +1076,9 @@
     }
 
     function parseSheetCSV(csvText) {
+      if (!csvText || typeof csvText !== 'string' || !csvText.trim()) {
+        throw new Error('Empty CSV content');
+      }
       const lines = csvText.split(/\r?\n/).map(l => l.trim()).filter(l => l.length > 0);
       let headerRowIndex = -1;
       let headers = [];
@@ -1142,6 +1145,8 @@
         }
       }
 
+      if (contingent.length === 0) throw new Error('No contingent teams parsed');
+
       contingent.sort((a, b) => {
         if (b.total_points === a.total_points) return a.name.localeCompare(b.name);
         return b.total_points - a.total_points;
@@ -1180,59 +1185,83 @@
 
     async function fetchData(){
       try {
-        const fetchUrl = SHEET_CSV_URL + '&_t=' + Date.now();
-        const r = await fetch(fetchUrl);
+        const controller = new AbortController();
+        const timeoutId = setTimeout(() => controller.abort(), 6000);
+        const r = await fetch(SHEET_CSV_URL, { cache: 'no-cache', signal: controller.signal });
+        clearTimeout(timeoutId);
         if(!r.ok) throw new Error('Google Sheet HTTP error: ' + r.status);
         const csvText = await r.text();
         return parseSheetCSV(csvText);
       } catch(e) {
-        console.warn('Google Sheet fetch error, falling back to cached/fallback:', e);
+        console.warn('Google Sheet live fetch note:', e.message || e);
         return FALLBACK;
       }
     }
 
     function render(d){
-      let lb='';
-      d.contingent.forEach(t=>{
-        const rc = t.rank<=3 ? ' sb-r'+t.rank : '';
-        lb+=`<div class="sb-card${rc}"><div class="sb-badge">${MEDALS[t.rank]||'#'+t.rank}</div><div style="flex:1"><div class="sb-name">${t.name}</div><div style="font-size:12px;color:#d4a373;margin-top:2px;font-family:var(--font-sans)">Total Points</div></div><div class="sb-total">${t.total_points}</div></div>`;
-      });
-      document.getElementById('sb-leaderboard').innerHTML=lb;
+      try {
+        if (!d || !d.contingent) d = FALLBACK;
 
-      let th='<tr><th>Rank</th><th>Department</th>';
-      SK.forEach(k=>{th+=`<th>${SB_SPORTS[k]}</th>`});
-      th+='<th>Total</th></tr>';
-      document.getElementById('sb-thead').innerHTML=th;
+        let lb='';
+        d.contingent.forEach(t=>{
+          const rc = t.rank<=3 ? ' sb-r'+t.rank : '';
+          lb+=`<div class="sb-card${rc}"><div class="sb-badge">${MEDALS[t.rank]||'#'+t.rank}</div><div style="flex:1"><div class="sb-name">${t.name}</div><div style="font-size:12px;color:#d4a373;margin-top:2px;font-family:var(--font-sans)">Total Points</div></div><div class="sb-total">${t.total_points}</div></div>`;
+        });
+        const lbEl = document.getElementById('sb-leaderboard');
+        if (lbEl) lbEl.innerHTML = lb;
 
-      let tb='';
-      d.contingent.forEach(t=>{
-        tb+=`<tr><td>${t.rank}</td><td>${t.name}</td>`;
-        SK.forEach(k=>{ const v=t[k]||0; tb+=`<td${v>0?' class="sb-scored"':''}>${v}</td>`; });
-        tb+=`<td>${t.total_points}</td></tr>`;
-      });
-      document.getElementById('sb-tbody').innerHTML=tb;
+        let th='<tr><th>Rank</th><th>Department</th>';
+        SK.forEach(k=>{th+=`<th>${SB_SPORTS[k]}</th>`});
+        th+='<th>Total</th></tr>';
+        const thEl = document.getElementById('sb-thead');
+        if (thEl) thEl.innerHTML = th;
 
-      let fr='';
-      d.friendly.forEach(t=>{
-        fr+=`<div class="sb-friendly-card"><span style="font-weight:700;color:#f1e2cc">${t.name}</span><span style="font-size:1.5rem;font-weight:900;color:#4ade80">${t.total_points}</span></div>`;
-      });
-      document.getElementById('sb-friendly').innerHTML=fr;
+        let tb='';
+        d.contingent.forEach(t=>{
+          tb+=`<tr><td>${t.rank}</td><td>${t.name}</td>`;
+          SK.forEach(k=>{ const v=t[k]||0; tb+=`<td${v>0?' class="sb-scored"':''}>${v}</td>`; });
+          tb+=`<td>${t.total_points}</td></tr>`;
+        });
+        const tbEl = document.getElementById('sb-tbody');
+        if (tbEl) tbEl.innerHTML = tb;
 
-      if(d.last_updated){
-        const dt=new Date(d.last_updated);
-        document.getElementById('sb-last-updated').innerHTML='Last Updated: <span style="color:#fcb900;font-weight:700">'+dt.toLocaleString('en-IN',{day:'2-digit',month:'short',year:'numeric',hour:'2-digit',minute:'2-digit',hour12:true})+ ' IST</span>';
+        let fr='';
+        (d.friendly || []).forEach(t=>{
+          fr+=`<div class="sb-friendly-card"><span style="font-weight:700;color:#f1e2cc">${t.name}</span><span style="font-size:1.5rem;font-weight:900;color:#4ade80">${t.total_points}</span></div>`;
+        });
+        const frEl = document.getElementById('sb-friendly');
+        if (frEl) frEl.innerHTML = fr;
+
+        if(d.last_updated){
+          const dt=new Date(d.last_updated);
+          const luEl = document.getElementById('sb-last-updated');
+          if (luEl) luEl.innerHTML='Last Updated: <span style="color:#fcb900;font-weight:700">'+dt.toLocaleString('en-IN',{day:'2-digit',month:'short',year:'numeric',hour:'2-digit',minute:'2-digit',hour12:true})+ ' IST</span>';
+        }
+      } catch(err) {
+        console.error('Render error:', err);
+      } finally {
+        const loadingEl = document.getElementById('sb-loading');
+        if (loadingEl) loadingEl.style.display='none';
+        const contentEl = document.getElementById('sb-content');
+        if (contentEl) contentEl.style.display='block';
       }
-
-      document.getElementById('sb-loading').style.display='none';
-      document.getElementById('sb-content').style.display='block';
     }
 
-    async function load(){ render(await fetchData()); }
+    async function load(){
+      const data = await fetchData();
+      render(data);
+    }
 
-    document.addEventListener('DOMContentLoaded',()=>{
+    function init(){
       load();
       setInterval(load, 20000);
-    });
+    }
+
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', init);
+    } else {
+      init();
+    }
   })();
   </script>
 
