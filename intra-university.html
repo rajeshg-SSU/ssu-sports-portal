@@ -1220,7 +1220,7 @@
 
       if(d.last_updated){
         const dt=new Date(d.last_updated);
-        document.getElementById('sb-last-updated').innerHTML='Last Updated: <span style="color:#fcb900;font-weight:700">'+dt.toLocaleString('en-IN',{day:'2-digit',month:'short',year:'numeric',hour:'2-digit',minute:'2-digit',hour12:true})+ ' IST</span> <span style="font-size:12px;color:#22c55e;margin-left:8px;"><i class="fas fa-sync-alt"></i> Synced with Google Sheets</span>';
+        document.getElementById('sb-last-updated').innerHTML='Last Updated: <span style="color:#fcb900;font-weight:700">'+dt.toLocaleString('en-IN',{day:'2-digit',month:'short',year:'numeric',hour:'2-digit',minute:'2-digit',hour12:true})+ ' IST</span>';
       }
 
       document.getElementById('sb-loading').style.display='none';
